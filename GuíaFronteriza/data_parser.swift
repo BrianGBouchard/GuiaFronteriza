@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 
 
@@ -62,4 +63,17 @@ func getDelayTime(forCrossing crossing: String, crossingType: String, laneType: 
     let delayTime = delayTimeData.components(separatedBy: "<")[0]
 
     return delayTime
+}
+
+func showData(crossing: String, controller: UIViewController, crossingTitle: String) {
+    let updateTime = getUpdateTime(forCrossing: crossing, crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>")
+    let updateTimeMessage = "Last Updated: \(updateTime)"
+    let portStatus = getPortStatus(forCrossing: crossing)
+    let portStatusMessage = "Port Status: \(portStatus)"
+    let delayTime = getDelayTime(forCrossing: crossing, crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>")
+    let delayTimeMessage = "Delay: \(delayTime) minutes"
+    let alert = UIAlertController(title: crossingTitle, message: "\(updateTimeMessage) \n \(portStatusMessage) \n \(delayTimeMessage)", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    alert.addAction(okAction)
+    controller.present(alert, animated: true)
 }
