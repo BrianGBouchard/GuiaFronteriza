@@ -24,13 +24,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Npu-M9-sik"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vE-hh-Q3l">
+                                <rect key="frame" x="325" y="637" width="42" height="30"/>
+                                <state key="normal" title="About">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dih-Ze-h51"/>
+                                    <segue destination="3t2-eM-szT" kind="presentation" identifier="Info" id="Dhl-cq-nvU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3vE-hh-Q3l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="325" id="CKY-OF-Np3"/>
+                            <constraint firstItem="3vE-hh-Q3l" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="GZq-sO-4A9"/>
+                            <constraint firstItem="dn6-Mk-qdh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MoU-3O-Kar"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P1J-hK-FBx"/>
+                            <constraint firstItem="3vE-hh-Q3l" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="617" id="RT2-ZC-8nb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="W8q-KA-YJP"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h0d-Oa-tZh"/>
+                            <constraint firstItem="3vE-hh-Q3l" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iOC-Sx-LEY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="jja-vC-9lg"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nfU-DO-uLY"/>
-                            <constraint firstItem="dn6-Mk-qdh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vsX-gl-sjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -41,6 +57,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="71.514242878560722"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="g14-da-0of">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="3t2-eM-szT" customClass="InfoViewController" customModule="Gui_aFronteriza" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c3z-JQ-PMq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Information displayed indicates delay times at standard passanger vehicle lanes." translatesAutoresizingMaskIntoConstraints="NO" id="oW5-Ir-7Nv">
+                                <rect key="frame" x="16" y="169" width="343" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Data provided by U.S. Customs and Border Protection" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-jD-i4d">
+                                <rect key="frame" x="16" y="262" width="343" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guía Fronteriza/Border Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-Qz-hCc">
+                                <rect key="frame" x="44" y="68" width="287" height="20"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Consult the U.S. Department of Homeland Security website for commercial vehicle information" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6B-ph-iHv">
+                                <rect key="frame" x="16" y="340" width="343" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uen-IL-vDw">
+                                <rect key="frame" x="331" y="637" width="37" height="30"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressedWithSender:" destination="3t2-eM-szT" eventType="touchUpInside" id="wQA-Dc-tVm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="3SC-Qz-hCc" firstAttribute="top" secondItem="vrN-0P-Kgp" secondAttribute="top" constant="48" id="39m-TZ-ZGe"/>
+                            <constraint firstItem="Uen-IL-vDw" firstAttribute="leading" secondItem="vrN-0P-Kgp" secondAttribute="leading" constant="331" id="HfB-X8-QfT"/>
+                            <constraint firstItem="vrN-0P-Kgp" firstAttribute="trailing" secondItem="Uen-IL-vDw" secondAttribute="trailing" constant="7" id="UuO-Di-orv"/>
+                            <constraint firstItem="3SC-Qz-hCc" firstAttribute="leading" secondItem="vrN-0P-Kgp" secondAttribute="leading" constant="44" id="fIJ-xy-soE"/>
+                            <constraint firstItem="Uen-IL-vDw" firstAttribute="bottom" secondItem="vrN-0P-Kgp" secondAttribute="bottom" id="oMF-s1-ebf"/>
+                            <constraint firstItem="vrN-0P-Kgp" firstAttribute="trailing" secondItem="3SC-Qz-hCc" secondAttribute="trailing" constant="44" id="qMk-tg-1am"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vrN-0P-Kgp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3L3-uJ-d3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="759.20000000000005" y="73.313343328335833"/>
         </scene>
     </scenes>
 </document>

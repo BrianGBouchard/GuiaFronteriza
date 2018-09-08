@@ -16,6 +16,7 @@
 		A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60EE2141BF8500476786 /* data_parser.swift */; };
 		A8FF60F22142E78700476786 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FF60F12142E78700476786 /* MapKit.framework */; };
 		A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60F52142F20400476786 /* crossingAnnotation.swift */; };
+		A8FF60F82144370200476786 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60F72144370200476786 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A8FF60EE2141BF8500476786 /* data_parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_parser.swift; sourceTree = "<group>"; };
 		A8FF60F12142E78700476786 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A8FF60F52142F20400476786 /* crossingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossingAnnotation.swift; sourceTree = "<group>"; };
+		A8FF60F72144370200476786 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				A8FF60D92141BC4C00476786 /* AppDelegate.swift */,
 				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
+				A8FF60F72144370200476786 /* InfoViewController.swift */,
 				A8FF60EE2141BF8500476786 /* data_parser.swift */,
 				A8FF60F52142F20400476786 /* crossingAnnotation.swift */,
 				A8FF60DD2141BC4C00476786 /* Main.storyboard */,
@@ -165,6 +168,7 @@
 				A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */,
 				A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */,
 				A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */,
+				A8FF60F82144370200476786 /* InfoViewController.swift in Sources */,
 				A8FF60DA2141BC4C00476786 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Bouchard.Gui-aFronteriza";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Brian-Bouchard.Gui-aFronteriza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -334,7 +338,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Brian-Bouchard.Gui-aFronteriza";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Brian-Bouchard.Gui-aFronteriza";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
