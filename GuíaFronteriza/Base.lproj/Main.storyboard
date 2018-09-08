@@ -34,15 +34,25 @@
                                     <segue destination="3t2-eM-szT" kind="presentation" identifier="Info" id="Dhl-cq-nvU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guía Fronteriza: Border Crossing Wait Times" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgV-n8-swW">
+                                <rect key="frame" x="16" y="29" width="343" height="32"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lgV-n8-swW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="4In-pK-rxz"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="325" id="CKY-OF-Np3"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="GZq-sO-4A9"/>
+                            <constraint firstItem="lgV-n8-swW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="J1g-RP-i1E"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MoU-3O-Kar"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P1J-hK-FBx"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="617" id="RT2-ZC-8nb"/>
+                            <constraint firstItem="3vE-hh-Q3l" firstAttribute="top" secondItem="lgV-n8-swW" secondAttribute="bottom" constant="576" id="UvH-mR-fqb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="W8q-KA-YJP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lgV-n8-swW" secondAttribute="trailing" constant="16" id="e1r-6k-IXg"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h0d-Oa-tZh"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iOC-Sx-LEY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="jja-vC-9lg"/>
@@ -56,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="71.514242878560722"/>
+            <point key="canvasLocation" x="32.5" y="71.5"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="g14-da-0of">
