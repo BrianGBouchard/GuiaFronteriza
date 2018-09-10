@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  GuíaFronteriza
-//
-//  Created by Brian Bouchard on 9/6/18.
-//  Copyright © 2018 Brian Bouchard. All rights reserved.
-//
-
 import UIKit
 import MapKit
 
@@ -14,6 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
 
     var crossings: Array<CrossingAnnotation> = []
+    var selectedPort: CrossingAnnotation?
 
     let centerCoordinates = CLLocationCoordinate2DMake(30.874890, -106.286547)
 
@@ -233,8 +226,12 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondScene = segue.destination as! InfoViewController
-        secondScene.unwindDestination = self
+        if segue.identifier == "Data" {
+            let secondScene = segue.destination as! DataViewController
+            secondScene.crossing = selectedPort!.xmlIdentifier!
+            secondScene.crossingTitle = selectedPort!.title!
+            selectedPort = nil
+        }
     }
 
     @IBAction func buttonPressed(sender: Any?) {
@@ -243,17 +240,18 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let port = view.annotation?.coordinate {
             for item in crossings {
                 if item.coordinate.latitude == port.latitude && item.coordinate.longitude == port.longitude {
-                    showData(crossing: item.xmlIdentifier!, controller: self, crossingTitle: item.title!)
+                    //showData(crossing: item.xmlIdentifier!, controller: self, crossingTitle: item.title!)
+                    selectedPort = item
+                    performSegue(withIdentifier: "Data", sender: Any?.self)
                 }
             }
         }
+        mapView.deselectAnnotation(view.annotation!, animated: true)
     }
 }
 
