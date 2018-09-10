@@ -4,17 +4,23 @@ import MapKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var aboutButton: UIButton!
 
     var crossings: Array<CrossingAnnotation> = []
     var selectedPort: CrossingAnnotation?
 
     let centerCoordinates = CLLocationCoordinate2DMake(30.874890, -106.286547)
 
+    @IBOutlet var control: UISegmentedControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print(getDelayTime(forCrossing: "San Ysidro", crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>"))
         loadMap(rangeSpan: 2500000)
+
+        control.selectedSegmentIndex = 0
 
         let sanYsidro = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.542564, -117.029342), title: "San Ysidro")
         sanYsidro.xmlIdentifier = "San Ysidro"
@@ -235,7 +241,21 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(sender: Any?) {
+    }
 
+    @IBAction func toggle(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            mapView.mapType = .satellite
+            control.tintColor! = .white
+            titleLabel.textColor = .white
+            aboutButton.titleLabel!.textColor! = .white
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            mapView.mapType = .standard
+            control.tintColor! = .black
+            titleLabel.textColor = .black
+            aboutButton.titleLabel!.textColor! = .black
+        }
     }
 }
 
