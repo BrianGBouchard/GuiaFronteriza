@@ -6,19 +6,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var aboutButton: UIButton!
+    @IBOutlet var control: UISegmentedControl!
 
     var crossings: Array<CrossingAnnotation> = []
     var selectedPort: CrossingAnnotation?
-
     let centerCoordinates = CLLocationCoordinate2DMake(30.874890, -106.286547)
 
-    @IBOutlet var control: UISegmentedControl!
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-
     override func viewDidLoad() {
+
+        aboutButton.isSelected = false
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print(getDelayTime(forCrossing: "San Ysidro", crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>"))
@@ -241,6 +237,10 @@ class ViewController: UIViewController {
             secondScene.crossing = selectedPort!.xmlIdentifier!
             secondScene.crossingTitle = selectedPort!.title!
             selectedPort = nil
+        }
+        if segue.identifier == "Info" {
+            let secondScene = segue.destination as! InfoViewController
+            secondScene.rootController = self
         }
     }
 
