@@ -6,12 +6,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var aboutButton: UIButton!
+    @IBOutlet var showTableButton: UIButton!
     @IBOutlet var control: UISegmentedControl!
 
     var crossings: Array<CrossingAnnotation> = []
     var selectedPort: CrossingAnnotation?
     let centerCoordinates = CLLocationCoordinate2DMake(30.874890, -106.286547)
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private let annotationIdentifier = MKAnnotationView.description()
 
     override func viewDidLoad() {
 
@@ -29,19 +31,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
         control.selectedSegmentIndex = 0
 
-        let sanYsidro = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.542564, -117.029342), title: "San Ysidro")
-        sanYsidro.xmlIdentifier = "San Ysidro"
-        crossings.append(sanYsidro)
-
-        let tecate = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.576332, -116.627447), title: "Tecate")
-        tecate.xmlIdentifier = "Tecate"
-        crossings.append(tecate)
-
         let andrade = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.718132, -114.728626), title: "Andrade")
         andrade.xmlIdentifier = "Andrade"
         crossings.append(andrade)
 
-        let brownsvilleBM = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.891932, -97.504709), title: "Brownsville: \n B&M Bridge")
+        let brownsvilleBM = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.891932, -97.504709), title: "Brownsville: \nB&M Bridge")
         brownsvilleBM.xmlIdentifier = "535501"
         crossings.append(brownsvilleBM)
 
@@ -53,7 +47,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         brownsvilleLosIndios.xmlIdentifier = "535503"
         crossings.append(brownsvilleLosIndios)
 
-        let brownsvilleVeterans = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.883627, -97.476396), title: "Brownsville:\n Veterans International Bridge")
+        let brownsvilleVeterans = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.883627, -97.476396), title: "Brownsville: \nVeterans International Bridge")
         brownsvilleVeterans.xmlIdentifier = "535502"
         crossings.append(brownsvilleVeterans)
 
@@ -109,7 +103,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         fortHancock.xmlIdentifier = "124501"
         crossings.append(fortHancock)
 
-        let hpAnzalduas = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(26.116480, -98.318232), title: "Hidalgo/Pharr:\n Anzalduas Bridge")
+        let hpAnzalduas = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(26.116480, -98.318232), title: "Hidalgo/Pharr: \nAnzalduas Bridge")
         hpAnzalduas.xmlIdentifier = "230503"
         crossings.append(hpAnzalduas)
 
@@ -185,6 +179,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         santaTeresa.xmlIdentifier = "240801"
         crossings.append(santaTeresa)
 
+        let sanYsidro = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.542564, -117.029342), title: "San Ysidro")
+        sanYsidro.xmlIdentifier = "San Ysidro"
+        crossings.append(sanYsidro)
+
+        let tecate = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.576332, -116.627447), title: "Tecate")
+        tecate.xmlIdentifier = "Tecate"
+        crossings.append(tecate)
+
         for item in crossings {
             mapView.addAnnotation(item)
         }
@@ -216,9 +218,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let secondScene = segue.destination as! InfoViewController
             secondScene.rootController = self
         }
+        if segue.identifier == "Table" {
+            let secondScene = segue.destination as! TableListViewController
+            secondScene.crossings = self.crossings
+            secondScene.rootViewController = self
+        }
     }
 
     @IBAction func buttonPressed(sender: Any?) {
+    }
+
+    @IBAction func tableButtonPressed(sender: Any?) {
     }
 
     @IBAction func toggle(sender: UISegmentedControl) {
@@ -229,6 +239,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             aboutButton.titleLabel!.textColor! = .white
             UIApplication.shared.statusBarStyle = .lightContent
             activityIndicator.color! = .white
+            showTableButton.titleLabel!.textColor! = .white
         } else if sender.selectedSegmentIndex == 1 {
             mapView.mapType = .standard
             control.tintColor! = .black
@@ -236,6 +247,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             aboutButton.titleLabel!.textColor! = .black
             UIApplication.shared.statusBarStyle = .default
             activityIndicator.color! = .black
+            showTableButton.titleLabel!.textColor! = .black
         }
     }
 }
@@ -243,7 +255,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
 extension ViewController {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        activityIndicator.startAnimating()
         if let port = view.annotation?.coordinate {
             for item in crossings {
                 if item.coordinate.latitude == port.latitude && item.coordinate.longitude == port.longitude {
@@ -254,6 +265,21 @@ extension ViewController {
             }
         }
         mapView.deselectAnnotation(view.annotation!, animated: true)
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            // I used pin here MKPinAnnotationView
+            // You can use MKAnnotationView and then set your own custom image if you want for each pin!
+        }
+
+        return annotationView
     }
 }
 
