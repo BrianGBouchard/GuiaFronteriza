@@ -12,5 +12,6 @@ class InfoViewController: UIViewController {
         } else {
             rootController?.aboutButton!.titleLabel!.textColor! = .black
         }
+        rootController?.activityIndicator.stopAnimating()
     }
 }

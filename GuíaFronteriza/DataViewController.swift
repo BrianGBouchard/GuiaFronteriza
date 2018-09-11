@@ -11,6 +11,8 @@ class DataViewController: UIViewController {
     var crossing: String?
     var crossingTitle: String?
 
+    var rootController: ViewController?
+
     override func viewDidLoad() {
         titleLabel.text! = crossingTitle!
         showData(crossing: crossing!, crossingTitle: crossingTitle!)
@@ -31,5 +33,6 @@ class DataViewController: UIViewController {
 
     @IBAction func buttonPressed(sender: Any?) {
         self.dismiss(animated: true, completion: nil)
+        rootController?.activityIndicator.stopAnimating()
     }
 }

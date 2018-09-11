@@ -2,6 +2,7 @@ import Foundation
 import MapKit
 
 class CrossingAnnotation: NSObject, MKAnnotation {
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
