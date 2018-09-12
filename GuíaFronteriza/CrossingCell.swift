@@ -38,7 +38,7 @@ class CrossingCell: UITableViewCell {
         DispatchQueue.main.async {
             self.updateTimeLabel.text! = "Last updated: \(String(describing: data["updateTime"]!))"
             self.portStatusLabel.text! = "Port status: \(String(describing: data["portStatus"]!))"
-            if data["delayTime"] == "N/A" {
+            if data["delayTime"] == "N/A" || data["delayTime"] == "" {
                 self.delayTimeLabel.text! = "Delay: N/A"
             } else {
             self.delayTimeLabel.text! = "Delay: \(String(describing: data["delayTime"]!)) minutes"

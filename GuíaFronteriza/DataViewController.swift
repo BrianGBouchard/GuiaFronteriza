@@ -43,7 +43,7 @@ class DataViewController: UIViewController {
     func showData(data: [String: String]) {
 
         DispatchQueue.main.async {
-            if data["delayTime"] == "N/A" || data["delaytime"] == "" {
+            if data["delayTime"] == "N/A" || data["delayTime"] == "" {
                 self.delayTimeText.text! = "Delay Time: N/A"
             } else {
                 self.delayTimeText.text! = "Delay: \(String(describing: data["delayTime"]!)) minutes"
