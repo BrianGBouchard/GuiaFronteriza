@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var titleLabel: UILabel!
@@ -16,6 +16,33 @@ class ViewController: UIViewController, MKMapViewDelegate {
     private let annotationIdentifier = MKAnnotationView.description()
 
     override func viewDidLoad() {
+
+        let locationManager = CLLocationManager()
+
+        if CLLocationManager.locationServicesEnabled() == true {
+
+            /*if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .notDetermined {
+                locationManager.requestWhenInUseAuthorization()
+            }
+
+            locationManager.desiredAccuracy = 1.0
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()*/
+            mapView.showsUserLocation = true
+
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "User Location Unavailable", message: "Please enable location services", preferredStyle: .alert)
+            let action1: UIAlertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(action1)
+            present(alert, animated: true)
+        }
+
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        }
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print(error.localizedDescription)
+        }
 
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         activityIndicator.color = UIColor.white

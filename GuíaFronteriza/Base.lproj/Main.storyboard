@@ -33,7 +33,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dih-Ze-h51"/>
-                                    <segue destination="3t2-eM-szT" kind="presentation" identifier="Info" id="Dhl-cq-nvU"/>
+                                    <segue destination="3t2-eM-szT" kind="presentation" identifier="Info" modalPresentationStyle="overCurrentContext" id="faV-fa-vtB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guía Fronteriza: Border Crossing Wait Times" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lgV-n8-swW">
@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggq-ri-Nu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.600000000000001" y="785.75712143928047"/>
+            <point key="canvasLocation" x="31" y="786"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="g14-da-0of">

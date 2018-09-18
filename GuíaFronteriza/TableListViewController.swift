@@ -7,16 +7,12 @@ class TableListViewController: UIViewController {
     @IBOutlet var showMapButton: UIButton!
 
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-
     var rootViewController: ViewController?
     var crossings: Array<CrossingAnnotation> = []
-
     var selectedCrossing: CrossingAnnotation?
 
     override func viewDidLoad() {
-
         UIApplication.shared.statusBarStyle = .lightContent
-
         view.addSubview(activityIndicator)
 
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
@@ -25,7 +21,6 @@ class TableListViewController: UIViewController {
         
         tableView.layer.borderColor! = UIColor.white.cgColor
         tableView.layer.borderWidth = 1.0
-
     }
 
     @IBAction func mapButtonPressed(sender: Any?) {
@@ -40,14 +35,9 @@ class TableListViewController: UIViewController {
         }
         rootViewController?.activityIndicator.stopAnimating()
     }
-
 }
 
 extension TableListViewController: UITableViewDataSource, UITableViewDelegate {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return crossings.count
