@@ -1,11 +1,3 @@
-//
-//  CrossingCell.swift
-//  GuíaFronteriza
-//
-//  Created by Brian Bouchard on 9/11/18.
-//  Copyright © 2018 Brian Bouchard. All rights reserved.
-//
-
 import UIKit
 
 class CrossingCell: UITableViewCell {
@@ -15,10 +7,13 @@ class CrossingCell: UITableViewCell {
     @IBOutlet weak var portStatusLabel: UILabel!
     @IBOutlet weak var delayTimeLabel: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func prepareForReuse() {
+        super.prepareForReuse()
 
-        // Configure the view for the selected state
+        self.titleLabel.text = ""
+        self.updateTimeLabel.text = "Loading..."
+        self.portStatusLabel.text = ""
+        self.delayTimeLabel.text = ""
     }
 
     func getData(crossing: String, crossingTitle: String) {
