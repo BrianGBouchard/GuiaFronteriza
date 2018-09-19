@@ -63,6 +63,16 @@
                                     <segue destination="WOq-J8-z8Z" kind="presentation" identifier="Table" modalPresentationStyle="overCurrentContext" id="jFb-KY-24Q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-MZ-CP1">
+                                <rect key="frame" x="92" y="554" width="190" height="30"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                <state key="normal" title="Find Fastest Crossing">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkUserLocationStatus" destination="BYZ-38-t0r" eventType="touchUpInside" id="IAS-b1-naw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -75,11 +85,13 @@
                             <constraint firstItem="lgV-n8-swW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="J1g-RP-i1E"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MoU-3O-Kar"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P1J-hK-FBx"/>
+                            <constraint firstItem="Nbi-5E-4cm" firstAttribute="top" secondItem="vXd-MZ-CP1" secondAttribute="bottom" constant="8" id="Sj2-sc-RnB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="Wkg-UO-hm7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lgV-n8-swW" secondAttribute="trailing" constant="16" id="e1r-6k-IXg"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h0d-Oa-tZh"/>
                             <constraint firstItem="Ge2-ID-iTa" firstAttribute="top" secondItem="Nbi-5E-4cm" secondAttribute="bottom" constant="7" id="k24-IV-dk9"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nfU-DO-uLY"/>
+                            <constraint firstItem="vXd-MZ-CP1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uXM-1I-I5X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8F163372147680B00E44275 /* CrossingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F163362147680B00E44275 /* CrossingAnnotationView.swift */; };
 		A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633821481B2000E44275 /* TableListViewController.swift */; };
 		A8F1633C214833F900E44275 /* CrossingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633A214833F900E44275 /* CrossingCell.swift */; };
+		A8F1638121516E7100E44275 /* crossingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1638021516E7100E44275 /* crossingsList.swift */; };
+		A8F16383215186D300E44275 /* TravelTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F16382215186D300E44275 /* TravelTime.swift */; };
+		A8F163852151BC3100E44275 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F163842151BC3100E44275 /* CoreLocation.framework */; };
 		A8FF60DA2141BC4C00476786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60D92141BC4C00476786 /* AppDelegate.swift */; };
 		A8FF60DC2141BC4C00476786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60DB2141BC4C00476786 /* ViewController.swift */; };
 		A8FF60DF2141BC4C00476786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FF60DD2141BC4C00476786 /* Main.storyboard */; };
@@ -24,9 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A8F163362147680B00E44275 /* CrossingAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossingAnnotationView.swift; sourceTree = "<group>"; };
 		A8F1633821481B2000E44275 /* TableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListViewController.swift; sourceTree = "<group>"; };
 		A8F1633A214833F900E44275 /* CrossingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossingCell.swift; sourceTree = "<group>"; };
+		A8F1638021516E7100E44275 /* crossingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossingsList.swift; sourceTree = "<group>"; };
+		A8F16382215186D300E44275 /* TravelTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTime.swift; sourceTree = "<group>"; };
+		A8F163842151BC3100E44275 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A8FF60D62141BC4C00476786 /* GuíaFronteriza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GuíaFronteriza.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FF60D92141BC4C00476786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FF60DB2141BC4C00476786 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F163852151BC3100E44275 /* CoreLocation.framework in Frameworks */,
 				A8FF60F22142E78700476786 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,12 +81,13 @@
 			children = (
 				A8FF60D92141BC4C00476786 /* AppDelegate.swift */,
 				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
+				A8F16382215186D300E44275 /* TravelTime.swift */,
 				A8F1633821481B2000E44275 /* TableListViewController.swift */,
-				A8F1633A214833F900E44275 /* CrossingCell.swift */,
-				A8F163362147680B00E44275 /* CrossingAnnotationView.swift */,
 				A8FF60F92145F57500476786 /* DataViewController.swift */,
 				A8FF60F72144370200476786 /* InfoViewController.swift */,
 				A8FF60EE2141BF8500476786 /* data_parser.swift */,
+				A8F1633A214833F900E44275 /* CrossingCell.swift */,
+				A8F1638021516E7100E44275 /* crossingsList.swift */,
 				A8FF60F52142F20400476786 /* crossingAnnotation.swift */,
 				A8FF60DD2141BC4C00476786 /* Main.storyboard */,
 				A8FF60E32141BC4F00476786 /* Assets.xcassets */,
@@ -95,6 +101,7 @@
 		A8FF60F02142E78700476786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8F163842151BC3100E44275 /* CoreLocation.framework */,
 				A8FF60F12142E78700476786 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -179,13 +186,14 @@
 				A8FF60DC2141BC4C00476786 /* ViewController.swift in Sources */,
 				A8FF60FA2145F57500476786 /* DataViewController.swift in Sources */,
 				A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */,
+				A8F16383215186D300E44275 /* TravelTime.swift in Sources */,
 				A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */,
 				A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */,
 				A8F1633C214833F900E44275 /* CrossingCell.swift in Sources */,
 				A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */,
-				A8F163372147680B00E44275 /* CrossingAnnotationView.swift in Sources */,
 				A8FF60F82144370200476786 /* InfoViewController.swift in Sources */,
 				A8FF60DA2141BC4C00476786 /* AppDelegate.swift in Sources */,
+				A8F1638121516E7100E44275 /* crossingsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
