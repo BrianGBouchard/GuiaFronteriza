@@ -27,10 +27,12 @@ class TableListViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         if rootViewController?.control.selectedSegmentIndex == 0 {
             rootViewController?.showTableButton.titleLabel?.textColor = .white
+            rootViewController?.crossingButton.titleLabel?.textColor! = .white
             UIApplication.shared.statusBarStyle = .lightContent
         }
         if rootViewController?.control.selectedSegmentIndex == 1 {
             rootViewController?.showTableButton.titleLabel?.textColor = .black
+            rootViewController?.crossingButton.titleLabel?.textColor! = .black
             UIApplication.shared.statusBarStyle = .default
         }
         rootViewController?.activityIndicator.stopAnimating()

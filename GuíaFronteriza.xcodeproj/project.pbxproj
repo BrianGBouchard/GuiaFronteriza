@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE421545E9D00E5A0A6 /* Distance.swift */; };
+		A8F04DE72155264500E5A0A6 /* FastestCrossingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */; };
 		A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633821481B2000E44275 /* TableListViewController.swift */; };
 		A8F1633C214833F900E44275 /* CrossingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633A214833F900E44275 /* CrossingCell.swift */; };
 		A8F1638121516E7100E44275 /* crossingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1638021516E7100E44275 /* crossingsList.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8F04DE421545E9D00E5A0A6 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastestCrossingViewController.swift; sourceTree = "<group>"; };
 		A8F1633821481B2000E44275 /* TableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListViewController.swift; sourceTree = "<group>"; };
 		A8F1633A214833F900E44275 /* CrossingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossingCell.swift; sourceTree = "<group>"; };
 		A8F1638021516E7100E44275 /* crossingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossingsList.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			children = (
 				A8FF60D92141BC4C00476786 /* AppDelegate.swift */,
 				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
+				A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */,
+				A8F04DE421545E9D00E5A0A6 /* Distance.swift */,
 				A8F16382215186D300E44275 /* TravelTime.swift */,
 				A8F1633821481B2000E44275 /* TableListViewController.swift */,
 				A8FF60F92145F57500476786 /* DataViewController.swift */,
@@ -183,11 +189,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */,
 				A8FF60DC2141BC4C00476786 /* ViewController.swift in Sources */,
 				A8FF60FA2145F57500476786 /* DataViewController.swift in Sources */,
 				A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */,
 				A8F16383215186D300E44275 /* TravelTime.swift in Sources */,
 				A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */,
+				A8F04DE72155264500E5A0A6 /* FastestCrossingViewController.swift in Sources */,
 				A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */,
 				A8F1633C214833F900E44275 /* CrossingCell.swift in Sources */,
 				A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */,

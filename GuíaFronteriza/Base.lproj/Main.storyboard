@@ -98,10 +98,12 @@
                     <connections>
                         <outlet property="aboutButton" destination="3vE-hh-Q3l" id="hMC-D5-IFy"/>
                         <outlet property="control" destination="Ge2-ID-iTa" id="Uya-9v-URZ"/>
+                        <outlet property="crossingButton" destination="vXd-MZ-CP1" id="qCO-kg-jA7"/>
                         <outlet property="mapView" destination="dn6-Mk-qdh" id="p8Y-kq-MXd"/>
                         <outlet property="showTableButton" destination="Nbi-5E-4cm" id="WsX-i6-W7N"/>
                         <outlet property="titleLabel" destination="lgV-n8-swW" id="lOc-jc-Y93"/>
                         <segue destination="rfZ-8r-ExK" kind="presentation" identifier="Data" modalPresentationStyle="overCurrentContext" id="xlr-eM-a5Q"/>
+                        <segue destination="yRe-e4-W6X" kind="presentation" identifier="FastestCrossing" modalPresentationStyle="overCurrentContext" id="609-H4-cmo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -208,7 +210,7 @@
                                     <action selector="tableButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ooa-NE-rTV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Guía Fronteriza: Border Crossing Wait Times" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cna-3L-l2d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Guía Fronteriza: Border Crossing Wait Times" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cna-3L-l2d">
                                 <rect key="frame" x="19" y="29" width="337" height="15"/>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -311,6 +313,96 @@
             </objects>
             <point key="canvasLocation" x="31" y="786"/>
         </scene>
+        <!--Fastest Crossing View Controller-->
+        <scene sceneID="qpg-hL-3ke">
+            <objects>
+                <viewController id="yRe-e4-W6X" customClass="FastestCrossingViewController" customModule="Gui_aFronteriza" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cz8-eV-HvV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="55" text="Your most efficient option crossing option is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVd-jd-YpD">
+                                <rect key="frame" x="16" y="106" width="343" height="55"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="55" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koW-d2-Fls">
+                                <rect key="frame" x="16" y="211" width="343" height="55"/>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="55" text="Total travel estimate (including travel and border delays) is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufs-s7-5jK">
+                                <rect key="frame" x="16" y="316" width="343" height="55"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="55" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jF-Sg-mRa">
+                                <rect key="frame" x="16" y="421" width="343" height="55"/>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="37" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3N-n5-rVN">
+                                <rect key="frame" x="320" y="24" width="37" height="30"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonWithSender:" destination="yRe-e4-W6X" eventType="touchUpInside" id="UKb-AM-R0f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="119" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEk-RT-B23">
+                                <rect key="frame" x="128" y="526" width="119" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="3h0-3M-sba"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                <state key="normal" title="Directions">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressedWithSender:" destination="yRe-e4-W6X" eventType="touchUpInside" id="nqp-nP-qsH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ufs-s7-5jK" firstAttribute="top" secondItem="koW-d2-Fls" secondAttribute="bottom" constant="50" id="5c9-SL-veF"/>
+                            <constraint firstItem="koW-d2-Fls" firstAttribute="leading" secondItem="Bsl-2z-Nr6" secondAttribute="leading" constant="16" id="7IT-3G-AQg"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="trailing" secondItem="Ufs-s7-5jK" secondAttribute="trailing" constant="16" id="BIO-jw-mYx"/>
+                            <constraint firstItem="OEk-RT-B23" firstAttribute="centerX" secondItem="Bsl-2z-Nr6" secondAttribute="centerX" id="BMw-uN-KFT"/>
+                            <constraint firstItem="9jF-Sg-mRa" firstAttribute="top" secondItem="Ufs-s7-5jK" secondAttribute="bottom" constant="50" id="D85-e2-n90"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="trailing" secondItem="koW-d2-Fls" secondAttribute="trailing" constant="16" id="FFm-WH-Tkd"/>
+                            <constraint firstItem="koW-d2-Fls" firstAttribute="top" secondItem="oVd-jd-YpD" secondAttribute="bottom" constant="50" id="FkN-us-0NZ"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="trailing" secondItem="9jF-Sg-mRa" secondAttribute="trailing" constant="16" id="G5p-H6-SmQ"/>
+                            <constraint firstItem="9jF-Sg-mRa" firstAttribute="leading" secondItem="Bsl-2z-Nr6" secondAttribute="leading" constant="16" id="Ue4-bc-CyI"/>
+                            <constraint firstItem="oVd-jd-YpD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bsl-2z-Nr6" secondAttribute="top" constant="20" id="YSQ-vE-siD"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="trailing" secondItem="oVd-jd-YpD" secondAttribute="trailing" constant="16" id="bAT-Pc-mCz"/>
+                            <constraint firstItem="N3N-n5-rVN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bsl-2z-Nr6" secondAttribute="leading" constant="16" id="fGR-x7-p0T"/>
+                            <constraint firstItem="N3N-n5-rVN" firstAttribute="top" secondItem="Bsl-2z-Nr6" secondAttribute="top" constant="4" id="l3k-Fp-wQ7"/>
+                            <constraint firstItem="oVd-jd-YpD" firstAttribute="leading" secondItem="Bsl-2z-Nr6" secondAttribute="leading" constant="16" id="nFX-li-sDa"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="trailing" secondItem="N3N-n5-rVN" secondAttribute="trailing" constant="18" id="neF-5c-dQg"/>
+                            <constraint firstItem="OEk-RT-B23" firstAttribute="top" secondItem="9jF-Sg-mRa" secondAttribute="bottom" constant="50" id="sgo-p5-MOm"/>
+                            <constraint firstItem="Ufs-s7-5jK" firstAttribute="leading" secondItem="Bsl-2z-Nr6" secondAttribute="leading" constant="16" id="uKK-nJ-UH4"/>
+                            <constraint firstItem="Bsl-2z-Nr6" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OEk-RT-B23" secondAttribute="bottom" constant="20" id="xsP-Vm-L3I"/>
+                            <constraint firstItem="Ufs-s7-5jK" firstAttribute="centerY" secondItem="Bsl-2z-Nr6" secondAttribute="centerY" id="zgx-5n-tOr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bsl-2z-Nr6"/>
+                    </view>
+                    <connections>
+                        <outlet property="crossingNameLabel" destination="koW-d2-Fls" id="VoY-nZ-NK4"/>
+                        <outlet property="delayLabel" destination="9jF-Sg-mRa" id="slM-NK-aws"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ARh-c4-vXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757.60000000000002" y="785.75712143928047"/>
+        </scene>
         <!--Info View Controller-->
         <scene sceneID="g14-da-0of">
             <objects>
@@ -319,7 +411,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Data provided by U.S. Customs and Border Protection" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-jD-i4d">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Data found at U.S. Customs and Border Protection website" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-jD-i4d">
                                 <rect key="frame" x="16" y="319" width="343" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
