@@ -52,8 +52,11 @@
                                     <action selector="toggleWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="f38-fY-KaZ"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-5E-4cm">
-                                <rect key="frame" x="142" y="592" width="91" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="141" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-5E-4cm">
+                                <rect key="frame" x="117" y="584" width="141" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="mNB-4s-v2Z"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                 <state key="normal" title="Show Table">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,8 +66,11 @@
                                     <segue destination="WOq-J8-z8Z" kind="presentation" identifier="Table" modalPresentationStyle="overCurrentContext" id="jFb-KY-24Q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-MZ-CP1">
-                                <rect key="frame" x="92" y="554" width="190" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="223" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-MZ-CP1">
+                                <rect key="frame" x="83" y="59.5" width="209" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="209" id="OEZ-pw-fhc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                 <state key="normal" title="Find Fastest Crossing">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +83,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lgV-n8-swW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="4In-pK-rxz"/>
-                            <constraint firstItem="Nbi-5E-4cm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="62T-1j-4HX"/>
+                            <constraint firstItem="Ge2-ID-iTa" firstAttribute="top" secondItem="Nbi-5E-4cm" secondAttribute="bottom" constant="15" id="6Qq-Oj-Ans"/>
+                            <constraint firstItem="vXd-MZ-CP1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="9dH-52-QlR"/>
+                            <constraint firstItem="Nbi-5E-4cm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="EhY-0G-JmG"/>
                             <constraint firstItem="Ge2-ID-iTa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EmJ-i7-NkH"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Eod-Mo-g6n"/>
                             <constraint firstItem="3vE-hh-Q3l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ge2-ID-iTa" secondAttribute="trailing" constant="16" id="FC9-zN-LZp"/>
@@ -85,13 +93,13 @@
                             <constraint firstItem="lgV-n8-swW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="J1g-RP-i1E"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MoU-3O-Kar"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="P1J-hK-FBx"/>
-                            <constraint firstItem="Nbi-5E-4cm" firstAttribute="top" secondItem="vXd-MZ-CP1" secondAttribute="bottom" constant="8" id="Sj2-sc-RnB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3vE-hh-Q3l" secondAttribute="trailing" constant="8" id="Wkg-UO-hm7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lgV-n8-swW" secondAttribute="trailing" constant="16" id="e1r-6k-IXg"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h0d-Oa-tZh"/>
-                            <constraint firstItem="Ge2-ID-iTa" firstAttribute="top" secondItem="Nbi-5E-4cm" secondAttribute="bottom" constant="7" id="k24-IV-dk9"/>
+                            <constraint firstItem="vXd-MZ-CP1" firstAttribute="top" secondItem="lgV-n8-swW" secondAttribute="bottom" constant="15" id="hO1-Hk-exH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nbi-5E-4cm" secondAttribute="trailing" constant="117" id="n6A-py-21I"/>
                             <constraint firstItem="dn6-Mk-qdh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nfU-DO-uLY"/>
-                            <constraint firstItem="vXd-MZ-CP1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uXM-1I-I5X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXd-MZ-CP1" secondAttribute="trailing" constant="83" id="p6Y-aO-fUa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -397,6 +405,7 @@
                     <connections>
                         <outlet property="crossingNameLabel" destination="koW-d2-Fls" id="VoY-nZ-NK4"/>
                         <outlet property="delayLabel" destination="9jF-Sg-mRa" id="slM-NK-aws"/>
+                        <outlet property="directionsButton" destination="OEk-RT-B23" id="1Ql-hO-YeE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARh-c4-vXO" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,9 +11,11 @@ class FastestCrossingViewController: UIViewController {
 
     @IBOutlet var crossingNameLabel: UILabel!
     @IBOutlet var delayLabel: UILabel!
+    @IBOutlet var directionsButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        directionsButton.layer.cornerRadius = 7
         crossingNameLabel.text! = crossingName!
         delayLabel.text! = delay!
     }
@@ -28,10 +30,15 @@ class FastestCrossingViewController: UIViewController {
         if rootController?.control!.selectedSegmentIndex == 0 {
             rootController?.aboutButton!.titleLabel!.textColor! = .white
             rootController?.crossingButton.titleLabel?.textColor! = .white
+            rootController?.showTableButton.layer.borderColor = UIColor.white.cgColor
+            rootController?.crossingButton.layer.borderColor = UIColor.white.cgColor
             UIApplication.shared.statusBarStyle = .lightContent
+
         } else {
             rootController?.aboutButton!.titleLabel!.textColor! = .black
             rootController?.crossingButton.titleLabel?.textColor! = .black
+            rootController?.showTableButton.layer.borderColor = UIColor.black.cgColor
+            rootController?.crossingButton.layer.borderColor = UIColor.black.cgColor
             UIApplication.shared.statusBarStyle = .default
         }
     }

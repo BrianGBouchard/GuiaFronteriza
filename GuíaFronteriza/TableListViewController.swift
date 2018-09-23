@@ -28,11 +28,15 @@ class TableListViewController: UIViewController {
         if rootViewController?.control.selectedSegmentIndex == 0 {
             rootViewController?.showTableButton.titleLabel?.textColor = .white
             rootViewController?.crossingButton.titleLabel?.textColor! = .white
+            rootViewController?.showTableButton.layer.borderColor = UIColor.white.cgColor
+            rootViewController?.crossingButton.layer.borderColor = UIColor.white.cgColor
             UIApplication.shared.statusBarStyle = .lightContent
         }
         if rootViewController?.control.selectedSegmentIndex == 1 {
             rootViewController?.showTableButton.titleLabel?.textColor = .black
             rootViewController?.crossingButton.titleLabel?.textColor! = .black
+            rootViewController?.showTableButton.layer.borderColor = UIColor.black.cgColor
+            rootViewController?.crossingButton.layer.borderColor = UIColor.black.cgColor
             UIApplication.shared.statusBarStyle = .default
         }
         rootViewController?.activityIndicator.stopAnimating()

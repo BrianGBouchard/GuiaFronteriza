@@ -34,9 +34,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         aboutButton.isSelected = false
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         print(getDelayTime(forCrossing: "San Ysidro", crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>"))
         loadMap(rangeSpan: 2500000)
+        showTableButton.layer.borderWidth = 1
+        showTableButton.layer.cornerRadius = 7
+        showTableButton.layer.borderColor = UIColor.white.cgColor
+        crossingButton.layer.borderWidth = 1
+        crossingButton.layer.cornerRadius = 7
+        crossingButton.layer.borderColor = UIColor.white.cgColor
 
         control.selectedSegmentIndex = 0
 
@@ -106,7 +111,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .lightContent
             activityIndicator.color! = .white
             showTableButton.titleLabel!.textColor! = .white
+            showTableButton.layer.borderColor = UIColor.white.cgColor
             crossingButton.titleLabel?.textColor! = .white
+            crossingButton.layer.borderColor = UIColor.white.cgColor
+
         } else if sender.selectedSegmentIndex == 1 {
             mapView.mapType = .standard
             control.tintColor! = .black
@@ -115,7 +123,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .default
             activityIndicator.color! = .black
             showTableButton.titleLabel!.textColor! = .black
+            showTableButton.layer.borderColor = UIColor.black.cgColor
             crossingButton.titleLabel!.textColor! = .black
+            crossingButton.layer.borderColor = UIColor.black.cgColor
         }
     }
 
@@ -140,7 +150,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             if Locale.current.regionCode! != "MX" {
                 let regionAlert = UIAlertController(title: "Feature Unavailable", message: "This feature is only available for users travelling from Mexico to the U.S.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let action = UIAlertAction(title: "Ok", style: .default) { (alert) in
+                    //FIX THIS
+                    if self.titleLabel.textColor! == .black {
+                        self.control.selectedSegmentIndex = 1
+                    } else { self.control.selectedSegmentIndex = 0 }
+                    if self.control.selectedSegmentIndex == 0 {
+                        self.aboutButton.titleLabel?.textColor! = .white
+                        self.crossingButton.titleLabel?.textColor! = .white
+                        self.crossingButton.layer.borderColor = UIColor.white.cgColor
+                        self.showTableButton.titleLabel?.textColor! = .white
+                        self.showTableButton.layer.borderColor = UIColor.white.cgColor
+                    } else if self.control.selectedSegmentIndex == 1 {
+                        self.aboutButton.titleLabel?.textColor = .black
+                        self.crossingButton.titleLabel?.textColor! = .black
+                        self.crossingButton.layer.borderColor = UIColor.black.cgColor
+                        self.showTableButton.titleLabel?.textColor! = .black
+                        self.showTableButton.layer.borderColor = UIColor.black.cgColor
+                    }
+                }
                 regionAlert.addAction(action)
                 present(regionAlert, animated: true)
             } else {
