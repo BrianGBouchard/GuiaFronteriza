@@ -15,6 +15,7 @@ class FastestCrossingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .lightContent
         directionsButton.layer.cornerRadius = 7
         crossingNameLabel.text! = crossingName!
         delayLabel.text! = delay!
