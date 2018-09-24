@@ -22,6 +22,8 @@ class DataViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+
+        UIApplication.shared.statusBarStyle = .lightContent
         
         titleLabel.text! = crossingTitle!
         getData(crossing: crossing!, crossingTitle: crossingTitle!)
@@ -61,6 +63,9 @@ class DataViewController: UIViewController {
         }
         if tableRootController != nil {
             tableRootController?.activityIndicator.stopAnimating()
+        }
+        if rootController?.control.selectedSegmentIndex == 1 {
+            UIApplication.shared.statusBarStyle = .default
         }
     }
 }

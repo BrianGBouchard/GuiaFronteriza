@@ -30,14 +30,12 @@ class FastestCrossingViewController: UIViewController {
         if rootController?.control!.selectedSegmentIndex == 0 {
             rootController?.aboutButton!.titleLabel!.textColor! = .white
             rootController?.crossingButton.titleLabel?.textColor! = .white
-            rootController?.showTableButton.layer.borderColor = UIColor.white.cgColor
             rootController?.crossingButton.layer.borderColor = UIColor.white.cgColor
             UIApplication.shared.statusBarStyle = .lightContent
 
         } else {
             rootController?.aboutButton!.titleLabel!.textColor! = .black
             rootController?.crossingButton.titleLabel?.textColor! = .black
-            rootController?.showTableButton.layer.borderColor = UIColor.black.cgColor
             rootController?.crossingButton.layer.borderColor = UIColor.black.cgColor
             UIApplication.shared.statusBarStyle = .default
         }
