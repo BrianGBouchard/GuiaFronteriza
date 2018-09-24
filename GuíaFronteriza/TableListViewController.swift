@@ -23,23 +23,11 @@ class TableListViewController: UIViewController {
         tableView.layer.borderWidth = 1.0
     }
 
-    @IBAction func mapButtonPressed(sender: Any?) {
-        self.dismiss(animated: true, completion: nil)
-        if rootViewController?.control.selectedSegmentIndex == 0 {
-            rootViewController?.showTableButton.titleLabel?.textColor = .white
-            rootViewController?.crossingButton.titleLabel?.textColor! = .white
-            rootViewController?.showTableButton.layer.borderColor = UIColor.white.cgColor
-            rootViewController?.crossingButton.layer.borderColor = UIColor.white.cgColor
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-        if rootViewController?.control.selectedSegmentIndex == 1 {
-            rootViewController?.showTableButton.titleLabel?.textColor = .black
-            rootViewController?.crossingButton.titleLabel?.textColor! = .black
-            rootViewController?.showTableButton.layer.borderColor = UIColor.black.cgColor
-            rootViewController?.crossingButton.layer.borderColor = UIColor.black.cgColor
-            UIApplication.shared.statusBarStyle = .default
-        }
-        rootViewController?.activityIndicator.stopAnimating()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        crossings = getCrossings()
+        tableView.reloadData()
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 }
 
