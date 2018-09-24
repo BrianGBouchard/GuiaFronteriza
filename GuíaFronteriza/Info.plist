@@ -29,7 +29,7 @@
 	<key>NSLocationWhenInUseUseageDescription</key>
 	<string>Border Guide would to access your location in order to find the most efficient travel route for you</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

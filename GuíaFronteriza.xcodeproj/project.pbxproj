@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A839D6C52159562700156519 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A839D6C42159562700156519 /* Launch Screen.storyboard */; };
 		A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE421545E9D00E5A0A6 /* Distance.swift */; };
 		A8F04DE72155264500E5A0A6 /* FastestCrossingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */; };
 		A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633821481B2000E44275 /* TableListViewController.swift */; };
@@ -19,7 +20,6 @@
 		A8FF60DF2141BC4C00476786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FF60DD2141BC4C00476786 /* Main.storyboard */; };
 		A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60E02141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld */; };
 		A8FF60E42141BC4F00476786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FF60E32141BC4F00476786 /* Assets.xcassets */; };
-		A8FF60E72141BC4F00476786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FF60E52141BC4F00476786 /* LaunchScreen.storyboard */; };
 		A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60EE2141BF8500476786 /* data_parser.swift */; };
 		A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60F52142F20400476786 /* crossingAnnotation.swift */; };
 		A8FF60F82144370200476786 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60F72144370200476786 /* InfoViewController.swift */; };
@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A839D6C42159562700156519 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A8F04DE421545E9D00E5A0A6 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastestCrossingViewController.swift; sourceTree = "<group>"; };
 		A8F1633821481B2000E44275 /* TableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		A8FF60DE2141BC4C00476786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8FF60E12141BC4C00476786 /* Gui_aFronteriza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gui_aFronteriza.xcdatamodel; sourceTree = "<group>"; };
 		A8FF60E32141BC4F00476786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A8FF60E62141BC4F00476786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8FF60E82141BC4F00476786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8FF60EE2141BF8500476786 /* data_parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_parser.swift; sourceTree = "<group>"; };
 		A8FF60F52142F20400476786 /* crossingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossingAnnotation.swift; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 				A8F1638021516E7100E44275 /* crossingsList.swift */,
 				A8FF60F52142F20400476786 /* crossingAnnotation.swift */,
 				A8FF60DD2141BC4C00476786 /* Main.storyboard */,
+				A839D6C42159562700156519 /* Launch Screen.storyboard */,
 				A8FF60E32141BC4F00476786 /* Assets.xcassets */,
-				A8FF60E52141BC4F00476786 /* LaunchScreen.storyboard */,
 				A8FF60E82141BC4F00476786 /* Info.plist */,
 				A8FF60E02141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld */,
 			);
@@ -172,7 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8FF60E72141BC4F00476786 /* LaunchScreen.storyboard in Resources */,
+				A839D6C52159562700156519 /* Launch Screen.storyboard in Resources */,
 				A8FF60E42141BC4F00476786 /* Assets.xcassets in Resources */,
 				A8FF60DF2141BC4C00476786 /* Main.storyboard in Resources */,
 			);
@@ -210,14 +210,6 @@
 				A8FF60DE2141BC4C00476786 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A8FF60E52141BC4F00476786 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A8FF60E62141BC4F00476786 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

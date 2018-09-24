@@ -149,7 +149,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alert, animated: true)
         } else {
             if Locale.current.regionCode! != "MX" {
-                let regionAlert = UIAlertController(title: "Feature Unavailable", message: "This feature is only available for users travelling from Mexico to the U.S.", preferredStyle: .alert)
+                let regionAlert = UIAlertController(title: "Feature unavailable in your region", message: "This feature is only available for users travelling from Mexico to the U.S. (If this problem persists, change your phone's Region settings to 'Mexico')", preferredStyle: .alert)
                 let action = UIAlertAction(title: "Ok", style: .default) { (alert) in
                     //FIX THIS
                     if self.titleLabel.textColor! == .black {
