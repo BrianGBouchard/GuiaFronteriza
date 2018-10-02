@@ -29,6 +29,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         activityIndicator.hidesWhenStopped = true
 
         mapView.showsUserLocation = true
+
+        //self.tabBarController!.tabBar.layer.borderWidth = 1
+        self.tabBarController?.tabBar.layer.borderColor = UIColor.white.cgColor
         
         view.addSubview(activityIndicator)
         UIApplication.shared.statusBarStyle = .lightContent
@@ -72,6 +75,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let secondScene = segue.destination as! DataViewController
             secondScene.crossing = selectedPort!.xmlIdentifier!
             secondScene.crossingTitle = selectedPort!.title!
+            secondScene.selectedCrossing = selectedPort!
             selectedPort = nil
             secondScene.rootController = self
         }

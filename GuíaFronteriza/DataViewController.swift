@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import MapKit
 
 class DataViewController: UIViewController {
 
@@ -7,7 +8,9 @@ class DataViewController: UIViewController {
     @IBOutlet var portStatusText: UITextView!
     @IBOutlet var delayTimeText: UITextView!
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var directionsButton: UIButton!
 
+    var selectedCrossing: CrossingAnnotation?
     var crossing: String?
     var crossingTitle: String?
 
@@ -22,6 +25,7 @@ class DataViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        directionsButton.layer.cornerRadius = 7
 
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -67,5 +71,10 @@ class DataViewController: UIViewController {
         if rootController?.control.selectedSegmentIndex == 1 {
             UIApplication.shared.statusBarStyle = .default
         }
+    }
+
+    @IBAction func directionsButtonPressed(sender: Any?) {
+        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        MKMapItem(placemark: MKPlacemark(coordinate: selectedCrossing!.coordinate)).openInMaps(launchOptions: options)
     }
 }
