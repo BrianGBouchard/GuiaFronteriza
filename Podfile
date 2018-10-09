@@ -6,4 +6,7 @@ target 'GuíaFronteriza' do
   pod 'Firebase'
   pod 'FirebaseCore'
   pod 'FirebaseMessaging'
+  pod 'FirebaseAuth'
+  pod 'FirebaseDatabase'
+
 end

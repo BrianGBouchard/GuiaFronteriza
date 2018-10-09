@@ -12,17 +12,22 @@ import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
 import UserNotifications
+import FirebaseAuth
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
+    var currentUserID: String?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         FirebaseApp.configure()
+
+
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (isGranted, error) in
             if error != nil {
@@ -34,6 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     application.registerForRemoteNotifications()
                 }
             }
+        }
+
+        if Auth.auth().currentUser == nil {
+            Auth.auth().signInAnonymously { (user, error) in
+                if let error = error {
+                    print("Failed to sign in anonymously with error \(error)")
+                }
+                if let user = user {
+                    self.currentUserID = user.user.uid
+                    print("USER ID IS \(String(describing: self.currentUserID))")
+                }
+            }
+        } else {
+            currentUserID = Auth.auth().currentUser?.uid
+            print("USER ID IS \(String(describing: self.currentUserID))")
         }
 
         return true
