@@ -16,7 +16,6 @@ class DataViewController: UIViewController {
     var selectedCrossing: CrossingAnnotation?
     var crossing: String?
     var crossingTitle: String?
-
     var rootController: ViewController?
     var tableRootController: TableListViewController?
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
@@ -24,33 +23,6 @@ class DataViewController: UIViewController {
     var dbRef: DatabaseReference!
 
     override func viewDidLoad() {
-
-        /*var upperIndicatorBorder = UIView(frame: CGRect(x: 0, y: 36.5, width: pickerView.frame.width, height: 0.5))
-        var lowerIndicatorborder = UIView(frame: CGRect(x: 0, y: 63, width: pickerView.frame.width, height: 0.5))
-        var lowerIndicatorBorder2 = UIView(frame: CGRect(x: 0, y: 62.5, width: pickerView.frame.width, height: 0.5))
-        var hoursTop1: UIView = UIView(frame: CGRect(x: 0, y: 0, width: hoursLabel.frame.width, height: 0.5))
-        var hoursTop2: UIView = UIView(frame: CGRect(x: 0, y: 0.5, width: hoursLabel.frame.width, height: 0.5))
-        var hoursBottom1: UIView = UIView(frame: CGRect(x: 0, y: (hoursLabel.frame.height - 1), width: hoursLabel.frame.width, height: 0.5))
-        upperIndicatorBorder.layer.isOpaque = true
-        lowerIndicatorborder.layer.isOpaque = true
-        lowerIndicatorborder.backgroundColor = UIColor.lightGray
-        lowerIndicatorBorder2.isOpaque = true
-        hoursTop1.backgroundColor = UIColor.lightGray
-        hoursTop1.isOpaque = true
-        hoursTop2.backgroundColor = UIColor.lightGray
-        hoursTop2.alpha = 0.65
-        hoursBottom1.backgroundColor = UIColor.lightGray
-        hoursBottom1.alpha = 0.65
-        hoursLabel.textColor = UIColor.white
-        upperIndicatorBorder.backgroundColor = UIColor.lightGray
-        lowerIndicatorborder.backgroundColor = UIColor.lightGray
-        pickerView.addSubview(upperIndicatorBorder)
-        pickerView.addSubview(lowerIndicatorborder)
-        pickerView.addSubview(lowerIndicatorBorder2)
-        //hoursLabel.addSubview(hoursTop1)
-        hoursLabel.addSubview(hoursTop2)
-        hoursLabel.addSubview(hoursBottom1)*/
-
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         activityIndicator.color = UIColor.white
         activityIndicator.hidesWhenStopped = true
@@ -59,12 +31,18 @@ class DataViewController: UIViewController {
         directionsButton.layer.cornerRadius = 7
         notificationButton.layer.cornerRadius = 7
 
-
         UIApplication.shared.statusBarStyle = .lightContent
         titleLabel.text! = crossingTitle!
+        self.navigationItem.title = "Border Crossing"
         getData(crossing: crossing!, crossingTitle: crossingTitle!)
 
         dbRef = Database.database().reference().child("UserSettings")
+    }
+
+    override func viewDidLayoutSubviews() {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
+        view.backgroundColor = UIColor.white
+        self.view.addSubview(view)
     }
 
     func getData(crossing: String, crossingTitle: String) {
@@ -93,13 +71,11 @@ class DataViewController: UIViewController {
         }
     }
 
-    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
-
-
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Notifications" {
+            let button = UIBarButtonItem()
+            button.title = "Back"
+            navigationItem.backBarButtonItem = button
             let nextScene = segue.destination as! NotificationViewController
             nextScene.selectedCrossing = self.selectedCrossing
         }

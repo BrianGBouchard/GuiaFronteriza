@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         FirebaseApp.configure()
 
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font:UIFont(name: "Menlo", size: 15.0)!], for: .normal)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.font:UIFont(name: "Menlo", size: 15.0)!, NSAttributedStringKey.foregroundColor : UIColor.white]
+        
 
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (isGranted, error) in

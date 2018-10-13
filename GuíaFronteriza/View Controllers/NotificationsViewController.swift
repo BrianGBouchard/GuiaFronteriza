@@ -19,13 +19,13 @@ class NotificationViewController: UIViewController {
     let minutesArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
     var dbRef: DatabaseReference!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.loadView()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        dbRef = Database.database().reference().child("UserSettings")
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
 
         let upperIndicatorBorder = UIView(frame: CGRect(x: 0, y: 82.5, width: timePicker.frame.width, height: 0.5))
         let lowerIndicatorborder = UIView(frame: CGRect(x: 0, y: 109, width: timePicker.frame.width, height: 0.5))
@@ -62,8 +62,17 @@ class NotificationViewController: UIViewController {
         notifyButton.clipsToBounds = true
         cancelButton.layer.cornerRadius = 7
         cancelButton.clipsToBounds = true
-        
-        dbRef = Database.database().reference().child("UserSettings")
+
+        notifyButton.layer.cornerRadius = 7
+        notifyButton.clipsToBounds = true
+        cancelButton.layer.cornerRadius = 7
+        cancelButton.clipsToBounds = true
+
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
+        view.backgroundColor = UIColor.white
+        self.view.addSubview(view)
 
     }
 

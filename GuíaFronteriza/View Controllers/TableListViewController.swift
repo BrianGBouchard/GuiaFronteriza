@@ -34,8 +34,8 @@ class TableListViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Notify" {
-            let nextScene = segue.destination as! DataViewController
-            nextScene.selectedCrossing = self.selectedCrossing
+            let navigationController = segue.destination as! UINavigationController
+            let nextScene = navigationController.viewControllers[0] as! DataViewController
             nextScene.crossing = self.selectedCrossing!.xmlIdentifier!
             nextScene.crossingTitle = self.selectedCrossing!.title!
             self.selectedCrossing = nil
