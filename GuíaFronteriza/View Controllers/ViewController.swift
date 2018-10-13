@@ -72,10 +72,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Data" {
-            let secondScene = segue.destination as! DataViewController
-            secondScene.crossing = selectedPort!.xmlIdentifier!
-            secondScene.crossingTitle = selectedPort!.title!
-            secondScene.selectedCrossing = selectedPort!
+            let navigationController = segue.destination as! UINavigationController
+            let secondScene = navigationController.viewControllers[0] as! DataViewController
+            secondScene.crossing = selectedPort?.xmlIdentifier
+            secondScene.crossingTitle = selectedPort?.title
+            secondScene.selectedCrossing = selectedPort
             selectedPort = nil
             secondScene.rootController = self
         }

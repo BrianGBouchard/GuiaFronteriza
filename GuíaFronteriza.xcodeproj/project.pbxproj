@@ -11,6 +11,7 @@
 		A839D6C721596D9800156519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A839D6C621596D9700156519 /* Assets.xcassets */; };
 		A84C1AD887FB6444B220BA9F /* Pods_Gui_aFronteriza.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86463AE6F4F599543F17B835 /* Pods_Gui_aFronteriza.framework */; };
 		A856F2752166850B00B154BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A856F2742166850B00B154BE /* GoogleService-Info.plist */; };
+		A856F2952170DACE00B154BE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856F2942170DACE00B154BE /* NotificationsViewController.swift */; };
 		A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE421545E9D00E5A0A6 /* Distance.swift */; };
 		A8F04DE72155264500E5A0A6 /* FastestCrossingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */; };
 		A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1633821481B2000E44275 /* TableListViewController.swift */; };
@@ -35,6 +36,8 @@
 		A839D6C621596D9700156519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A856F2732166845B00B154BE /* GuíaFronteriza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GuíaFronteriza.entitlements"; sourceTree = "<group>"; };
 		A856F2742166850B00B154BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A856F2942170DACE00B154BE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		A856F2A421714B5F00B154BE /* GuíaFronteriza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GuíaFronteriza.entitlements"; sourceTree = "<group>"; };
 		A8F04DE421545E9D00E5A0A6 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastestCrossingViewController.swift; sourceTree = "<group>"; };
 		A8F1633821481B2000E44275 /* TableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +80,67 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A856F29E21714A0500B154BE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF60F92145F57500476786 /* DataViewController.swift */,
+				A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */,
+				A8FF60F72144370200476786 /* InfoViewController.swift */,
+				A856F2942170DACE00B154BE /* NotificationsViewController.swift */,
+				A8F1633821481B2000E44275 /* TableListViewController.swift */,
+				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A856F29F21714A2600B154BE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8F04DE421545E9D00E5A0A6 /* Distance.swift */,
+				A8F16382215186D300E44275 /* TravelTime.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A856F2A021714A4F00B154BE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8F1633A214833F900E44275 /* CrossingCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A856F2A121714A6400B154BE /* Service-Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF60F52142F20400476786 /* crossingAnnotation.swift */,
+				A8F1638021516E7100E44275 /* crossingsList.swift */,
+				A8FF60EE2141BF8500476786 /* data_parser.swift */,
+			);
+			path = "Service-Objects";
+			sourceTree = "<group>";
+		};
+		A856F2A221714A8300B154BE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A8FF60DD2141BC4C00476786 /* Main.storyboard */,
+				A839D6C42159562700156519 /* Launch Screen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A856F2A321714AA300B154BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A856F2732166845B00B154BE /* GuíaFronteriza.entitlements */,
+				A856F2742166850B00B154BE /* GoogleService-Info.plist */,
+				A839D6C621596D9700156519 /* Assets.xcassets */,
+				A8FF60E82141BC4F00476786 /* Info.plist */,
+				A8FF60E02141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A8FF60CD2141BC4C00476786 = {
 			isa = PBXGroup;
 			children = (
@@ -98,25 +162,14 @@
 		A8FF60D82141BC4C00476786 /* GuíaFronteriza */ = {
 			isa = PBXGroup;
 			children = (
-				A856F2732166845B00B154BE /* GuíaFronteriza.entitlements */,
-				A856F2742166850B00B154BE /* GoogleService-Info.plist */,
+				A856F2A421714B5F00B154BE /* GuíaFronteriza.entitlements */,
 				A8FF60D92141BC4C00476786 /* AppDelegate.swift */,
-				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
-				A8F04DE62155264500E5A0A6 /* FastestCrossingViewController.swift */,
-				A8F04DE421545E9D00E5A0A6 /* Distance.swift */,
-				A8F16382215186D300E44275 /* TravelTime.swift */,
-				A8F1633821481B2000E44275 /* TableListViewController.swift */,
-				A8FF60F92145F57500476786 /* DataViewController.swift */,
-				A8FF60F72144370200476786 /* InfoViewController.swift */,
-				A8FF60EE2141BF8500476786 /* data_parser.swift */,
-				A8F1633A214833F900E44275 /* CrossingCell.swift */,
-				A8F1638021516E7100E44275 /* crossingsList.swift */,
-				A8FF60F52142F20400476786 /* crossingAnnotation.swift */,
-				A8FF60DD2141BC4C00476786 /* Main.storyboard */,
-				A839D6C42159562700156519 /* Launch Screen.storyboard */,
-				A839D6C621596D9700156519 /* Assets.xcassets */,
-				A8FF60E82141BC4F00476786 /* Info.plist */,
-				A8FF60E02141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld */,
+				A856F2A021714A4F00B154BE /* Cells */,
+				A856F29F21714A2600B154BE /* Models */,
+				A856F2A321714AA300B154BE /* Resources */,
+				A856F2A121714A6400B154BE /* Service-Objects */,
+				A856F2A221714A8300B154BE /* Storyboards */,
+				A856F29E21714A0500B154BE /* View Controllers */,
 			);
 			path = "GuíaFronteriza";
 			sourceTree = "<group>";
@@ -267,6 +320,7 @@
 				A8FF60FA2145F57500476786 /* DataViewController.swift in Sources */,
 				A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */,
 				A8F16383215186D300E44275 /* TravelTime.swift in Sources */,
+				A856F2952170DACE00B154BE /* NotificationsViewController.swift in Sources */,
 				A8F1633921481B2000E44275 /* TableListViewController.swift in Sources */,
 				A8F04DE72155264500E5A0A6 /* FastestCrossingViewController.swift in Sources */,
 				A8FF60F62142F20400476786 /* crossingAnnotation.swift in Sources */,
@@ -415,7 +469,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NLJT9N54Y2;
-				INFOPLIST_FILE = "GuíaFronteriza/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GuíaFronteriza/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,7 +491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NLJT9N54Y2;
-				INFOPLIST_FILE = "GuíaFronteriza/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GuíaFronteriza/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

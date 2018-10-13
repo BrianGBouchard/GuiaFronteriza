@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 import MapKit
+import Firebase
+import FirebaseDatabase
 
 class DataViewController: UIViewController {
 
@@ -9,6 +11,7 @@ class DataViewController: UIViewController {
     @IBOutlet var delayTimeText: UITextView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var directionsButton: UIButton!
+    @IBOutlet var notificationButton: UIButton!
 
     var selectedCrossing: CrossingAnnotation?
     var crossing: String?
@@ -18,7 +21,35 @@ class DataViewController: UIViewController {
     var tableRootController: TableListViewController?
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
 
+    var dbRef: DatabaseReference!
+
     override func viewDidLoad() {
+
+        /*var upperIndicatorBorder = UIView(frame: CGRect(x: 0, y: 36.5, width: pickerView.frame.width, height: 0.5))
+        var lowerIndicatorborder = UIView(frame: CGRect(x: 0, y: 63, width: pickerView.frame.width, height: 0.5))
+        var lowerIndicatorBorder2 = UIView(frame: CGRect(x: 0, y: 62.5, width: pickerView.frame.width, height: 0.5))
+        var hoursTop1: UIView = UIView(frame: CGRect(x: 0, y: 0, width: hoursLabel.frame.width, height: 0.5))
+        var hoursTop2: UIView = UIView(frame: CGRect(x: 0, y: 0.5, width: hoursLabel.frame.width, height: 0.5))
+        var hoursBottom1: UIView = UIView(frame: CGRect(x: 0, y: (hoursLabel.frame.height - 1), width: hoursLabel.frame.width, height: 0.5))
+        upperIndicatorBorder.layer.isOpaque = true
+        lowerIndicatorborder.layer.isOpaque = true
+        lowerIndicatorborder.backgroundColor = UIColor.lightGray
+        lowerIndicatorBorder2.isOpaque = true
+        hoursTop1.backgroundColor = UIColor.lightGray
+        hoursTop1.isOpaque = true
+        hoursTop2.backgroundColor = UIColor.lightGray
+        hoursTop2.alpha = 0.65
+        hoursBottom1.backgroundColor = UIColor.lightGray
+        hoursBottom1.alpha = 0.65
+        hoursLabel.textColor = UIColor.white
+        upperIndicatorBorder.backgroundColor = UIColor.lightGray
+        lowerIndicatorborder.backgroundColor = UIColor.lightGray
+        pickerView.addSubview(upperIndicatorBorder)
+        pickerView.addSubview(lowerIndicatorborder)
+        pickerView.addSubview(lowerIndicatorBorder2)
+        //hoursLabel.addSubview(hoursTop1)
+        hoursLabel.addSubview(hoursTop2)
+        hoursLabel.addSubview(hoursBottom1)*/
 
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         activityIndicator.color = UIColor.white
@@ -26,11 +57,14 @@ class DataViewController: UIViewController {
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         directionsButton.layer.cornerRadius = 7
+        notificationButton.layer.cornerRadius = 7
+
 
         UIApplication.shared.statusBarStyle = .lightContent
-        
         titleLabel.text! = crossingTitle!
         getData(crossing: crossing!, crossingTitle: crossingTitle!)
+
+        dbRef = Database.database().reference().child("UserSettings")
     }
 
     func getData(crossing: String, crossingTitle: String) {
@@ -47,7 +81,6 @@ class DataViewController: UIViewController {
     }
 
     func showData(data: [String: String]) {
-
         DispatchQueue.main.async {
             if data["delayTime"] == "N/A" || data["delayTime"] == "" {
                 self.delayTimeText.text! = "Delay Time: N/A"
@@ -58,6 +91,22 @@ class DataViewController: UIViewController {
             self.portStatusText.text! = "Port Status: \(String(describing: data["portStatus"]!))"
             self.activityIndicator.stopAnimating()
         }
+    }
+
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Notifications" {
+            let nextScene = segue.destination as! NotificationViewController
+            nextScene.selectedCrossing = self.selectedCrossing
+        }
+    }
+
+    @IBAction func notificationsButton(sender: Any?) {
+        performSegue(withIdentifier: "Notifications", sender: Any?.self)
     }
 
     @IBAction func buttonPressed(sender: Any?) {

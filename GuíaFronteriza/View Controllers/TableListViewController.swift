@@ -13,6 +13,7 @@ class TableListViewController: UIViewController {
     var selectedCrossing: CrossingAnnotation?
 
     override func viewDidLoad() {
+
         UIApplication.shared.statusBarStyle = .lightContent
         view.addSubview(activityIndicator)
 
@@ -29,6 +30,16 @@ class TableListViewController: UIViewController {
         crossings = getCrossings()
         tableView.reloadData()
         UIApplication.shared.statusBarStyle = .lightContent
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Notify" {
+            let nextScene = segue.destination as! DataViewController
+            nextScene.selectedCrossing = self.selectedCrossing
+            nextScene.crossing = self.selectedCrossing!.xmlIdentifier!
+            nextScene.crossingTitle = self.selectedCrossing!.title!
+            self.selectedCrossing = nil
+        }
     }
 }
 
@@ -58,8 +69,25 @@ extension TableListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCrossing = crossings[indexPath.row]
+        self.performSegue(withIdentifier: "Notify", sender: Any?.self)
+        /*tableView.deselectRow(at: indexPath, animated: true)
+        let alert = UIAlertController(title: "Select an option", message: "Would you like to view directions or to set up notifications?", preferredStyle: .alert)
+        let directiosAction = UIAlertAction(title: "Directions", style: .default) { (action) in
+            tableView.deselectRow(at: indexPath, animated: true)
+            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            MKMapItem(placemark: MKPlacemark(coordinate: self.crossings[indexPath.row].coordinate)).openInMaps(launchOptions: options)
+        }
+        let notificationsAction = UIAlertAction(title: "Notifications", style: .default) { (action) in
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.performSegue(withIdentifier: "Notify", sender: Any?.self)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(directiosAction)
+        alert.addAction(notificationsAction)
+        alert.addAction(cancel)
+        self.selectedCrossing = nil
+        self.present(alert, animated: true)*/
         tableView.deselectRow(at: indexPath, animated: true)
-        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        MKMapItem(placemark: MKPlacemark(coordinate: crossings[indexPath.row].coordinate)).openInMaps(launchOptions: options)
     }
 }

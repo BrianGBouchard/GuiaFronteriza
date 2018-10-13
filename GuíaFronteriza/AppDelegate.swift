@@ -54,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         } else {
             currentUserID = Auth.auth().currentUser?.uid
             print("USER ID IS \(String(describing: self.currentUserID))")
+            if let currentID = currentUserID {
+
+            }
         }
 
         return true
@@ -95,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        //tokenID = fcmToken
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
