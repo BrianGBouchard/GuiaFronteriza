@@ -13,7 +13,6 @@ class TableListViewController: UIViewController {
     var selectedCrossing: CrossingAnnotation?
 
     override func viewDidLoad() {
-
         UIApplication.shared.statusBarStyle = .lightContent
         view.addSubview(activityIndicator)
 
@@ -52,6 +51,7 @@ extension TableListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let crossing = crossings[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CrossingCell
+
         cell.titleLabel.text = crossing.title!
         cell.getData(crossing: crossing.xmlIdentifier!, crossingTitle: crossing.title!)
         if crossing.title!.contains("\n") {
@@ -71,23 +71,6 @@ extension TableListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCrossing = crossings[indexPath.row]
         self.performSegue(withIdentifier: "Notify", sender: Any?.self)
-        /*tableView.deselectRow(at: indexPath, animated: true)
-        let alert = UIAlertController(title: "Select an option", message: "Would you like to view directions or to set up notifications?", preferredStyle: .alert)
-        let directiosAction = UIAlertAction(title: "Directions", style: .default) { (action) in
-            tableView.deselectRow(at: indexPath, animated: true)
-            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            MKMapItem(placemark: MKPlacemark(coordinate: self.crossings[indexPath.row].coordinate)).openInMaps(launchOptions: options)
-        }
-        let notificationsAction = UIAlertAction(title: "Notifications", style: .default) { (action) in
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.performSegue(withIdentifier: "Notify", sender: Any?.self)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(directiosAction)
-        alert.addAction(notificationsAction)
-        alert.addAction(cancel)
-        self.selectedCrossing = nil
-        self.present(alert, animated: true)*/
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

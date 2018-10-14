@@ -31,6 +31,11 @@ class DataViewController: UIViewController {
         directionsButton.layer.cornerRadius = 7
         notificationButton.layer.cornerRadius = 7
 
+        let button = UIBarButtonItem(barButtonSystemItem: .done , target: self, action: #selector(self.barButtonPressed(sender:)))
+        button.title = "Back"
+        button.setTitleTextAttributes([NSAttributedStringKey.font:UIFont(name: "Menlo", size: 15.0)], for: .normal)
+        navigationItem.leftBarButtonItem = button
+
         UIApplication.shared.statusBarStyle = .lightContent
         titleLabel.text! = crossingTitle!
         self.navigationItem.title = "Border Crossing"
@@ -78,6 +83,19 @@ class DataViewController: UIViewController {
             navigationItem.backBarButtonItem = button
             let nextScene = segue.destination as! NotificationViewController
             nextScene.selectedCrossing = self.selectedCrossing
+        }
+    }
+
+    @objc func barButtonPressed(sender: Any?) {
+        self.dismiss(animated: true, completion: nil)
+        if rootController != nil {
+            rootController?.activityIndicator.stopAnimating()
+        }
+        if tableRootController != nil {
+            tableRootController?.activityIndicator.stopAnimating()
+        }
+        if rootController?.control.selectedSegmentIndex == 1 {
+            UIApplication.shared.statusBarStyle = .default
         }
     }
 

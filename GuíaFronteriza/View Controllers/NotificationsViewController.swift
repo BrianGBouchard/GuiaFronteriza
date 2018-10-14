@@ -102,10 +102,6 @@ class NotificationViewController: UIViewController {
         }
     }
 
-    @IBAction func done(sender: Any?) {
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
-    }
-
     @IBAction func cancelButtonPressed(sender: Any?) {
         guard let userID = Auth.auth().currentUser?.uid else {
             return
