@@ -10,6 +10,7 @@ class NotificationViewController: UIViewController {
     @IBOutlet var timePicker: UIPickerView!
     @IBOutlet var notifyButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var successLabel: UILabel!
 
     var selectedCrossing: CrossingAnnotation?
     var hourValue: Int = 0
@@ -17,10 +18,19 @@ class NotificationViewController: UIViewController {
     var totalMinutes: Int = 0
     let hoursArray = [0,1,2,3]
     let minutesArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
+    let activityMonitor = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     var dbRef: DatabaseReference!
 
     override func viewDidLoad() {
+        activityMonitor.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
+        activityMonitor.color = UIColor.white
+        activityMonitor.hidesWhenStopped = true
+        view.addSubview(activityMonitor)
+        successLabel.isHidden = true
+        successLabel.layer.cornerRadius = 10
+        successLabel.clipsToBounds = true
         super.viewDidLoad()
+        self.navigationItem.title = "Notification Settings"
         dbRef = Database.database().reference().child("UserSettings")
     }
 
@@ -77,12 +87,36 @@ class NotificationViewController: UIViewController {
     }
 
     @IBAction func notifyButtonPressed(sender: Any?) {
+        activityMonitor.startAnimating()
         guard let userID = Auth.auth().currentUser?.uid, let tokenID = Messaging.messaging().fcmToken else {
             print("error, user not logged in")
             return
         }
+        var shouldDisplayLabel = true
 
         let ref = dbRef.child("\(userID)")
+        ref.child("Borders").observeSingleEvent(of: .childAdded) { (snapshot) in
+            if shouldDisplayLabel == true {
+                shouldDisplayLabel = false
+                let group = DispatchGroup()
+                group.enter()
+                self.activityMonitor.stopAnimating()
+                self.successLabel.fadeTransition(0.2)
+                self.successLabel.isHidden = false
+                group.leave()
+                group.notify(queue: .main) {
+                    let group2 = DispatchGroup()
+                    group2.enter()
+                    sleep(1)
+                    group2.leave()
+                    group2.notify(queue: .main) {
+                        self.successLabel.fadeOutTransition(0.2)
+                        self.successLabel.isHidden = true
+                    }
+                }
+            }
+        }
+
         ref.observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value as? NSDictionary {
                 if value["Token"] == nil {
@@ -103,8 +137,27 @@ class NotificationViewController: UIViewController {
     }
 
     @IBAction func cancelButtonPressed(sender: Any?) {
+        activityMonitor.startAnimating()
         guard let userID = Auth.auth().currentUser?.uid else {
             return
+        }
+        dbRef.observe(.childChanged) { (snapshot) in
+            let group = DispatchGroup()
+            group.enter()
+            self.activityMonitor.stopAnimating()
+            self.successLabel.fadeTransition(0.2)
+            self.successLabel.isHidden = false
+            group.leave()
+            group.notify(queue: .main) {
+                let group2 = DispatchGroup()
+                group2.enter()
+                sleep(1)
+                group2.leave()
+                group2.notify(queue: .main) {
+                    self.successLabel.fadeOutTransition(0.2)
+                    self.successLabel.isHidden = true
+                }
+            }
         }
         dbRef.child("\(userID)").child("Borders").child("\(selectedCrossing!.xmlIdentifier!)").removeValue()
     }

@@ -103,19 +103,6 @@ class DataViewController: UIViewController {
         performSegue(withIdentifier: "Notifications", sender: Any?.self)
     }
 
-    @IBAction func buttonPressed(sender: Any?) {
-        self.dismiss(animated: true, completion: nil)
-        if rootController != nil {
-            rootController?.activityIndicator.stopAnimating()
-        }
-        if tableRootController != nil {
-            tableRootController?.activityIndicator.stopAnimating()
-        }
-        if rootController?.control.selectedSegmentIndex == 1 {
-            UIApplication.shared.statusBarStyle = .default
-        }
-    }
-
     @IBAction func directionsButtonPressed(sender: Any?) {
         let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         MKMapItem(placemark: MKPlacemark(coordinate: selectedCrossing!.coordinate)).openInMaps(launchOptions: options)

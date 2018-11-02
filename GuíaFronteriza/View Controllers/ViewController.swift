@@ -55,6 +55,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 
+        for item in crossings {
+            print(item.xmlIdentifier!)
+        }
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -5,7 +5,6 @@ import MapKit
 class TableListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var showMapButton: UIButton!
 
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     var rootViewController: ViewController?
