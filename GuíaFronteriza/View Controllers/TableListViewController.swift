@@ -34,6 +34,7 @@ class TableListViewController: UIViewController {
         if segue.identifier == "Notify" {
             let navigationController = segue.destination as! UINavigationController
             let nextScene = navigationController.viewControllers[0] as! DataViewController
+            nextScene.selectedCrossing = self.selectedCrossing
             nextScene.crossing = self.selectedCrossing!.xmlIdentifier!
             nextScene.crossingTitle = self.selectedCrossing!.title!
             self.selectedCrossing = nil

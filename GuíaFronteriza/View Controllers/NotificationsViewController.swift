@@ -95,25 +95,14 @@ class NotificationViewController: UIViewController {
         var shouldDisplayLabel = true
 
         let ref = dbRef.child("\(userID)")
-        ref.child("Borders").observeSingleEvent(of: .childAdded) { (snapshot) in
+        ref.child("Borders").observeSingleEvent(of: .childAdded) { [weak self] (snapshot) in
             if shouldDisplayLabel == true {
                 shouldDisplayLabel = false
-                let group = DispatchGroup()
-                group.enter()
-                self.activityMonitor.stopAnimating()
-                self.successLabel.fadeTransition(0.2)
-                self.successLabel.isHidden = false
-                group.leave()
-                group.notify(queue: .main) {
-                    let group2 = DispatchGroup()
-                    group2.enter()
-                    sleep(1)
-                    group2.leave()
-                    group2.notify(queue: .main) {
-                        self.successLabel.fadeOutTransition(0.2)
-                        self.successLabel.isHidden = true
-                    }
-                }
+
+                self?.activityMonitor.stopAnimating()
+                self?.successLabel.fadeTransition(0.2)
+                self?.successLabel.isHidden = false
+                self?.perform(#selector(self?.animation), with: nil, afterDelay: 1.0)
             }
         }
 
@@ -136,28 +125,29 @@ class NotificationViewController: UIViewController {
         }
     }
 
+    @objc func animation() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.successLabel.alpha = 0.0
+        }) { _ in
+            self.successLabel.isHidden = true
+        }
+    }
+
     @IBAction func cancelButtonPressed(sender: Any?) {
         activityMonitor.startAnimating()
         guard let userID = Auth.auth().currentUser?.uid else {
             return
         }
-        dbRef.observe(.childChanged) { (snapshot) in
-            let group = DispatchGroup()
-            group.enter()
-            self.activityMonitor.stopAnimating()
-            self.successLabel.fadeTransition(0.2)
-            self.successLabel.isHidden = false
-            group.leave()
-            group.notify(queue: .main) {
-                let group2 = DispatchGroup()
-                group2.enter()
-                sleep(1)
-                group2.leave()
-                group2.notify(queue: .main) {
-                    self.successLabel.fadeOutTransition(0.2)
-                    self.successLabel.isHidden = true
-                }
-            }
+
+        dbRef.observe(.value) { [weak self] (snapshot) in
+            self?.activityMonitor.stopAnimating()
+            self?.successLabel.isHidden = false
+            self?.successLabel.alpha = 0.0
+            UIView.animate(withDuration: 0.5, animations: {
+                self?.successLabel.alpha = 1.0
+            })
+
+            self?.perform(#selector(self?.animation), with: nil, afterDelay: 1.0)
         }
         dbRef.child("\(userID)").child("Borders").child("\(selectedCrossing!.xmlIdentifier!)").removeValue()
     }
