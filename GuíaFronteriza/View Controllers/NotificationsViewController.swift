@@ -101,45 +101,46 @@ class NotificationViewController: UIViewController {
                 alert.addAction(action2)
                 self.present(alert, animated: true, completion: nil)
                 return
+            } else {
+                DispatchQueue.main.async {
+                    self.activityMonitor.startAnimating()
+                }
+                guard let userID = Auth.auth().currentUser?.uid, let tokenID = Messaging.messaging().fcmToken else {
+                    print("error, user not logged in")
+                    return
+                }
+
+                let ref = self.dbRef.child("\(userID)")
+                ref.child("Borders").observeSingleEvent(of: .childAdded) { [weak self] (snapshot) in
+                    DispatchQueue.main.async {
+                        self?.activityMonitor.stopAnimating()
+                    }
+                    self?.successLabel.fadeTransition(0.2)
+                    self?.successLabel.isHidden = false
+                    self?.successLabel.alpha = 1.0
+                    self?.perform(#selector(self?.animation), with: nil, afterDelay: 1.0)
+                }
+
+                ref.observeSingleEvent(of: .value) { (snapshot) in
+                    if let value = snapshot.value as? NSDictionary {
+                        if value["Token"] == nil {
+                            ref.setValue(["Token":"\(tokenID)"])
+                        }
+                        if value["Borders"] == nil {
+                            ref.child("Borders")
+                        }
+                    } else {
+                        ref.setValue(["Token": "\(tokenID)"])
+                        ref.child("Borders")
+                    }
+
+                    let selectedBorderRef = ref.child("Borders").child("\(String(describing: self.selectedCrossing!.xmlIdentifier!))")
+                    selectedBorderRef.setValue(["Time": self.totalMinutes])
+                    print(tokenID)
+                }
+
             }
         })
-
-        activityMonitor.startAnimating()
-        guard let userID = Auth.auth().currentUser?.uid, let tokenID = Messaging.messaging().fcmToken else {
-            print("error, user not logged in")
-            return
-        }
-        var shouldDisplayLabel = true
-
-        let ref = dbRef.child("\(userID)")
-        ref.child("Borders").observeSingleEvent(of: .childAdded) { [weak self] (snapshot) in
-            if shouldDisplayLabel == true {
-                //shouldDisplayLabel = false
-
-                self?.activityMonitor.stopAnimating()
-                self?.successLabel.fadeTransition(0.2)
-                self?.successLabel.isHidden = false
-                self?.perform(#selector(self?.animation), with: nil, afterDelay: 1.0)
-            }
-        }
-
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            if let value = snapshot.value as? NSDictionary {
-                if value["Token"] == nil {
-                    ref.setValue(["Token":"\(tokenID)"])
-                }
-                if value["Borders"] == nil {
-                    ref.child("Borders")
-                }
-            } else {
-                ref.setValue(["Token": "\(tokenID)"])
-                ref.child("Borders")
-            }
-
-            let selectedBorderRef = ref.child("Borders").child("\(String(describing: self.selectedCrossing!.xmlIdentifier!))")
-            selectedBorderRef.setValue(["Time": self.totalMinutes])
-            print(tokenID)
-        }
     }
 
     @objc func animation() {
