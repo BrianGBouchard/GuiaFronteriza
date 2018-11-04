@@ -4,6 +4,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import UIKit
 import FirebaseMessaging
+import UserNotifications
+import NotificationCenter
 
 class NotificationViewController: UIViewController {
 
@@ -87,6 +89,21 @@ class NotificationViewController: UIViewController {
     }
 
     @IBAction func notifyButtonPressed(sender: Any?) {
+
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus != UNAuthorizationStatus.authorized {
+                print("UNAUTHORIZED")
+                let alert = UIAlertController(title: "Notifications Disabled", message: "You do not have notifications enabled.  You can enable notifications in Settings", preferredStyle: .alert)
+                let action1 = UIAlertAction(title: "Settings", style: .default) { (alert) in
+                    UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil) }
+                let action2 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(action1)
+                alert.addAction(action2)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        })
+
         activityMonitor.startAnimating()
         guard let userID = Auth.auth().currentUser?.uid, let tokenID = Messaging.messaging().fcmToken else {
             print("error, user not logged in")
@@ -97,7 +114,7 @@ class NotificationViewController: UIViewController {
         let ref = dbRef.child("\(userID)")
         ref.child("Borders").observeSingleEvent(of: .childAdded) { [weak self] (snapshot) in
             if shouldDisplayLabel == true {
-                shouldDisplayLabel = false
+                //shouldDisplayLabel = false
 
                 self?.activityMonitor.stopAnimating()
                 self?.successLabel.fadeTransition(0.2)
