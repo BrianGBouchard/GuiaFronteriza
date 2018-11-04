@@ -96,8 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
-        print(userInfo)
-        print("Message ID: \(userInfo["gcm_message_id"]!)")
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {

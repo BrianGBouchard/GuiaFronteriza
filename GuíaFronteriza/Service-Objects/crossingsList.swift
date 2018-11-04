@@ -6,7 +6,7 @@ func getCrossings() -> [CrossingAnnotation] {
     var crossings: Array<CrossingAnnotation> = []
 
     let andrade = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.718132, -114.728626), title: "Andrade")
-    andrade.xmlIdentifier = "Andrade"
+    andrade.xmlIdentifier = "250201"
     crossings.append(andrade)
 
     let brownsvilleBM = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.891932, -97.504709), title: "Brownsville: \nB&M Bridge")
@@ -74,7 +74,7 @@ func getCrossings() -> [CrossingAnnotation] {
     crossings.append(fabens)
 
     let fortHancock = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(31.273255, -105.854507), title: "Fort Hancock")
-    fortHancock.xmlIdentifier = "124501"
+    fortHancock.xmlIdentifier = "l24501"
     crossings.append(fortHancock)
 
     let hpAnzalduas = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(26.116480, -98.318232), title: "Hidalgo/Pharr: \nAnzalduas Bridge")
@@ -154,11 +154,11 @@ func getCrossings() -> [CrossingAnnotation] {
     crossings.append(santaTeresa)
 
     let sanYsidro = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.542564, -117.029342), title: "San Ysidro")
-    sanYsidro.xmlIdentifier = "San Ysidro"
+    sanYsidro.xmlIdentifier = "250401"
     crossings.append(sanYsidro)
 
     let tecate = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(32.576332, -116.627447), title: "Tecate")
-    tecate.xmlIdentifier = "Tecate"
+    tecate.xmlIdentifier = "250501"
     crossings.append(tecate)
 
     return crossings

@@ -22,65 +22,136 @@ exports.getData = functions.https.onRequest(async (req, res) => {
     //(async function () {
 
         const identifiers = [
-            "250201",
-            "535501",
-            "535504",
-            "535503",
-            "535502",
-            "250301",
-            "250302",
-            "240601",
-            "230201",
-            "260101",
-            "230301",
-            "230302",
-            "240201",
-            "240202",
-            "240204",
-            "240203",
-            "240401",
-            "l24501",
-            "230503",
-            "230501",
-            "230502",
-            "230401",
-            "230402",
-            "230403",
-            "230404",
-            "260201",
-            "260301",
-            "260402",
-            "260403",
-            "250601",
-            "240301",
-            "230902",
-            "230901",
-            "230701",
-            "231001",
-            "260801",
-            "240801",
-            "250401",
-            "250501"]
+            ["250201", "Andrade"],
+            ["535501", "Brownsville: B&M Bridge"],
+            ["535504", "Brownsville: Gateway Bridge"],
+            ["535503", "Brownsville: Los Indios"],
+            ["535502", "Brownsville: Veterans International Bridge"],
+            ["250301", "Calexico: East"],
+            ["250302", "Calexico: West"],
+            ["240601", "Columbus"],
+            ["230201", "Del Rio"],
+            ["260101", "Douglas (Raul Hector Castro)"],
+            ["230301", "Eagle Pass (Bridge I)"],
+            ["230302", "Eagle Pass (Bridge II)"],
+            ["240201", "El Paso: Bridge of the Americas"],
+            ["240202", "El Paso: Paso Del Norte"],
+            ["240204", "El Paso: Stanton DCL"],
+            ["240203", "El Paso: Ysleta"],
+            ["240401", "Fabens: Tornillo"],
+            ["l24501", "Fort Hancock"],
+            ["230503", "Hidalgo/Pharr: Andaluzas Bridge"],
+            ["230501", "Hidalgo/Pharr: Hidalgo"],
+            ["230502", "Hidalgo/Pharr: Pharr"],
+            ["230401", "Laredo: Bridge I"],
+            ["230402", "Laredo: Bridge II"],
+            ["230403", "Laredo: Colombia Solidarity"],
+            ["230404", "Laredo: World Trade Bridge"],
+            ["260201", "Lukeville"],
+            ["260301", "Naco"],
+            ["260402", "Nogales: Mariposa"],
+            ["260403", "Nogales: Morley Gate"],
+            ["250601", "Otay Mesa"],
+            ["240301", "Presidio"],
+            ["230902", "Progreso: Donna International Bridge"],
+            ["230901", "Progreso"],
+            ["230701", "Rio Grande City"],
+            ["231001", "Roma"],
+            ["260801", "San Luis"],
+            ["240801", "Santa Teresa"],
+            ["250401", "San Ysidro"],
+            ["250501", "Tecate"]
+        ]
+
+        titles = {
+            "250201": "Andrade",
+            "535501": "Brownsville: B&M Bridge",
+            "535504": "Brownsville: Gateway Bridge",
+            "535503": "Brownsville: Los Indios",
+            "535502": "Brownsville: Veterans International Bridge",
+            "250301": "Calexico: East",
+            "250302": "Calexico: West",
+            "240601": "Columbus",
+            "230201": "Del Rio",
+            "260101": "Douglas (Raul Hector Castro)",
+            "230301": "Eagle Pass (Bridge I)",
+            "230302": "Eagle Pass (Bridge II)",
+            "240201": "El Paso: Bridge of the Americas",
+            "240202": "El Paso: Paso Del Norte",
+            "240204": "El Paso: Stanton DCL",
+            "240203": "El Paso: Ysleta",
+            "240401": "Fabens: Tornillo",
+            "l24501": "Fort Hancock",
+            "230503": "Hidalgo/Pharr: Andaluzas Bridge",
+            "230501": "Hidalgo/Pharr: Hidalgo",
+            "230502": "Hidalgo/Pharr: Pharr",
+            "230401": "Laredo: Bridge I",
+            "230402": "Laredo: Bridge II",
+            "230403": "Laredo: Colombia Solidarity",
+            "230404": "Laredo: World Trade Bridge",
+            "260201": "Lukeville",
+            "260301": "Naco",
+            "260402": "Nogales: Mariposa",
+            "260403": "Nogales: Morley Gate",
+            "250601": "Otay Mesa",
+            "240301": "Presidio",
+            "230902": "Progreso: Donna International Bridge",
+            "230901": "Progreso",
+            "230701": "Rio Grande City",
+            "231001": "Roma",
+            "260801": "San Luis",
+            "240801": "Santa Teresa",
+            "250401": "San Ysidro",
+            "250501": "Tecate"
+        }
     
         var result = await web.get('https://apps.cbp.gov/bwt/bwt.xml');
         const data = result.content;
-        console.log(data.content);
+        //console.log(data.content);
         for(var index=0; index<identifiers.length; index++) {
-            var section = data.split(identifiers[index])[1];
+            var section = data.split(identifiers[index][0])[1];
             var section1 = section.split("<passenger_vehicle_lanes>")[1];
             var section2 = section1.split("<standard_lanes>")[1];
             var section3 = section2.split("<delay_minutes>")[1];
             var section4 = section3.split("</delay_minutes>")[0];
-            console.log("The delay time at " + identifiers[index] + " is " + section4);
+            //console.log("The delay time at " + identifiers[index] + " is " + section4);
             // Grab the text parameter.
             const original = req.query.text;
             // Push the new message into the Realtime Database using the Firebase Admin SDK.
             //admin.database().ref('/DelayData').removeValue();
             //admin.database().ref('/DelayData').push(identifiers[index]);
             //admin.database().ref('/DelayData').ref("/" + identifieres[index]).push(section4);
-            ref.child("/"+identifiers[index]).set({section4})
+            ref.child("/"+identifiers[index][0]).set({section4})
 
             }
+
+        jsonData = await web.get("https://border-guide.firebaseio.com/UserSettings.json?print=pretty");
+        jsonCrossings = await web.get("https://border-guide.firebaseio.com/crossingData.json?print=pretty")
+        userData = JSON.parse(jsonData.content);
+        crossingData = JSON.parse(jsonCrossings.content); 
+        for (user in userData) {
+            userInfo = userData[user];
+            if ("Borders" in userInfo) {
+                console.log("SUCCESS")
+                borders = userInfo["Borders"];
+                for (border in borders) {
+                    crossingNumValue = parseInt(crossingData[border]["section4"], 10);
+                    if (crossingNumValue <= borders[border]["Time"]) {
+                        admin.database().ref("UserSettings").child(user).child("Borders").child(border).remove();
+                        messageText = "The current delay time at " + titles[border] + " is " + crossingNumValue + " minutes"
+                        message = {
+                            "notification": {
+                                "title": "Border Crossing Update",
+                                "body": messageText
+
+                            },
+                            "token": userData[user]["Token"]
+                        };
+                        admin.messaging().send(message);
+                    }
+                }
+            }
+        }
         return res.status(200).send('Hello');
     //})(); 
   });
@@ -105,3 +176,22 @@ exports.getData = functions.https.onRequest(async (req, res) => {
       return res.status(200).send("success");
     });
   });*/
+
+/*exports.checkDatabase = functions.https.onRequest(async (req, res) => {
+    jsonData = await web.get("https://border-guide.firebaseio.com/UserSettings.json?print=pretty");
+    userData = jsonData.content;
+    for (user in userData) {
+        userInfo = userData[user];
+        if ('Borders' in userInfo) {
+            borders = userInfo["Borders"];
+            for (border in borders) {
+                numValue = parseInt(ref[border], 10);
+                if (numValue <= borders[border][time]) {
+                    console.log("success")
+                };
+            };
+        };
+    };
+    
+});
+*/
