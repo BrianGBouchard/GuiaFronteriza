@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 import MapKit
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
+import FirebaseMessaging
 
 class DataViewController: UIViewController {
 
