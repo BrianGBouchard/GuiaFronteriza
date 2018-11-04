@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3447C2A449FD9D6AE7E37231 /* libPods-GuíaFronteriza.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC013F408DCDA00923BB072 /* libPods-GuíaFronteriza.a */; };
 		A839D6C52159562700156519 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A839D6C42159562700156519 /* Launch Screen.storyboard */; };
 		A839D6C721596D9800156519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A839D6C621596D9700156519 /* Assets.xcassets */; };
-		A84C1AD887FB6444B220BA9F /* Pods_Gui_aFronteriza.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86463AE6F4F599543F17B835 /* Pods_Gui_aFronteriza.framework */; };
 		A856F2752166850B00B154BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A856F2742166850B00B154BE /* GoogleService-Info.plist */; };
 		A856F2952170DACE00B154BE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856F2942170DACE00B154BE /* NotificationsViewController.swift */; };
 		A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F04DE421545E9D00E5A0A6 /* Distance.swift */; };
@@ -20,7 +20,7 @@
 		A8F16383215186D300E44275 /* TravelTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F16382215186D300E44275 /* TravelTime.swift */; };
 		A8F163852151BC3100E44275 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F163842151BC3100E44275 /* CoreLocation.framework */; };
 		A8FF60DA2141BC4C00476786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60D92141BC4C00476786 /* AppDelegate.swift */; };
-		A8FF60DC2141BC4C00476786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60DB2141BC4C00476786 /* ViewController.swift */; };
+		A8FF60DC2141BC4C00476786 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60DB2141BC4C00476786 /* MapViewController.swift */; };
 		A8FF60DF2141BC4C00476786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FF60DD2141BC4C00476786 /* Main.storyboard */; };
 		A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60E02141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld */; };
 		A8FF60EF2141BF8500476786 /* data_parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF60EE2141BF8500476786 /* data_parser.swift */; };
@@ -30,8 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3FDC21B386453030304EAD53 /* Pods-GuíaFronteriza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuíaFronteriza.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza.release.xcconfig"; sourceTree = "<group>"; };
-		86463AE6F4F599543F17B835 /* Pods_Gui_aFronteriza.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gui_aFronteriza.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC013F408DCDA00923BB072 /* libPods-GuíaFronteriza.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuíaFronteriza.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		436DF8CE56232844E94B7CFA /* Pods-GuíaFronteriza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuíaFronteriza.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza.release.xcconfig"; sourceTree = "<group>"; };
+		844F50D720324C2834A73480 /* Pods-GuíaFronteriza.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuíaFronteriza.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza.debug.xcconfig"; sourceTree = "<group>"; };
 		A839D6C42159562700156519 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A839D6C621596D9700156519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A856F2732166845B00B154BE /* GuíaFronteriza.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GuíaFronteriza.entitlements"; sourceTree = "<group>"; };
@@ -47,7 +48,7 @@
 		A8F163842151BC3100E44275 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A8FF60D62141BC4C00476786 /* GuíaFronteriza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GuíaFronteriza.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FF60D92141BC4C00476786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8FF60DB2141BC4C00476786 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A8FF60DB2141BC4C00476786 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A8FF60DE2141BC4C00476786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8FF60E12141BC4C00476786 /* Gui_aFronteriza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gui_aFronteriza.xcdatamodel; sourceTree = "<group>"; };
 		A8FF60E82141BC4F00476786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		A8FF60F52142F20400476786 /* crossingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crossingAnnotation.swift; sourceTree = "<group>"; };
 		A8FF60F72144370200476786 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A8FF60F92145F57500476786 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		C3CBFF02ED4C7AD1B81BB98D /* Pods-GuíaFronteriza.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuíaFronteriza.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,18 +64,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F163852151BC3100E44275 /* CoreLocation.framework in Frameworks */,
-				A84C1AD887FB6444B220BA9F /* Pods_Gui_aFronteriza.framework in Frameworks */,
+				3447C2A449FD9D6AE7E37231 /* libPods-GuíaFronteriza.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63FAE3F5C0F5E38A591C3E9A /* Pods */ = {
+		09E57356665526FCE8C23F80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C3CBFF02ED4C7AD1B81BB98D /* Pods-GuíaFronteriza.debug.xcconfig */,
-				3FDC21B386453030304EAD53 /* Pods-GuíaFronteriza.release.xcconfig */,
+				844F50D720324C2834A73480 /* Pods-GuíaFronteriza.debug.xcconfig */,
+				436DF8CE56232844E94B7CFA /* Pods-GuíaFronteriza.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 				A8FF60F72144370200476786 /* InfoViewController.swift */,
 				A856F2942170DACE00B154BE /* NotificationsViewController.swift */,
 				A8F1633821481B2000E44275 /* TableListViewController.swift */,
-				A8FF60DB2141BC4C00476786 /* ViewController.swift */,
+				A8FF60DB2141BC4C00476786 /* MapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 				A8FF60D82141BC4C00476786 /* GuíaFronteriza */,
 				A8FF60D72141BC4C00476786 /* Products */,
 				A8FF60F02142E78700476786 /* Frameworks */,
-				63FAE3F5C0F5E38A591C3E9A /* Pods */,
+				09E57356665526FCE8C23F80 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F163842151BC3100E44275 /* CoreLocation.framework */,
-				86463AE6F4F599543F17B835 /* Pods_Gui_aFronteriza.framework */,
+				3EC013F408DCDA00923BB072 /* libPods-GuíaFronteriza.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,11 +190,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8FF60EB2141BC4F00476786 /* Build configuration list for PBXNativeTarget "GuíaFronteriza" */;
 			buildPhases = (
-				F3C3B2189823D5D638E4CA86 /* [CP] Check Pods Manifest.lock */,
+				D82DF8093D65E18E19C112D6 /* [CP] Check Pods Manifest.lock */,
 				A8FF60D22141BC4C00476786 /* Sources */,
 				A8FF60D32141BC4C00476786 /* Frameworks */,
 				A8FF60D42141BC4C00476786 /* Resources */,
-				B317A4AD1431E410AE142C81 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +216,7 @@
 				TargetAttributes = {
 					A8FF60D52141BC4C00476786 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -264,42 +264,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B317A4AD1431E410AE142C81 /* [CP] Embed Pods Frameworks */ = {
+		D82DF8093D65E18E19C112D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuíaFronteriza/Pods-GuíaFronteriza-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3C3B2189823D5D638E4CA86 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-GuíaFronteriza-checkManifestLockResult.txt",
 			);
@@ -316,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F04DE521545E9D00E5A0A6 /* Distance.swift in Sources */,
-				A8FF60DC2141BC4C00476786 /* ViewController.swift in Sources */,
+				A8FF60DC2141BC4C00476786 /* MapViewController.swift in Sources */,
 				A8FF60FA2145F57500476786 /* DataViewController.swift in Sources */,
 				A8FF60E22141BC4C00476786 /* Gui_aFronteriza.xcdatamodeld in Sources */,
 				A8F16383215186D300E44275 /* TravelTime.swift in Sources */,
@@ -462,44 +440,52 @@
 		};
 		A8FF60EC2141BC4F00476786 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3CBFF02ED4C7AD1B81BB98D /* Pods-GuíaFronteriza.debug.xcconfig */;
+			baseConfigurationReference = 844F50D720324C2834A73480 /* Pods-GuíaFronteriza.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "GuíaFronteriza/GuíaFronteriza.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NLJT9N54Y2;
 				INFOPLIST_FILE = "$(SRCROOT)/GuíaFronteriza/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MODULE_NAME = GuiFronteriza_Module;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Nathan-Beaumont.BorderGuide";
+				PRODUCT_MODULE_NAME = GuiFronteriza_Module;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		A8FF60ED2141BC4F00476786 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FDC21B386453030304EAD53 /* Pods-GuíaFronteriza.release.xcconfig */;
+			baseConfigurationReference = 436DF8CE56232844E94B7CFA /* Pods-GuíaFronteriza.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "GuíaFronteriza/GuíaFronteriza.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = NLJT9N54Y2;
 				INFOPLIST_FILE = "$(SRCROOT)/GuíaFronteriza/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MODULE_NAME = GuiFronteriza_Module;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Nathan-Beaumont.BorderGuide";
+				PRODUCT_MODULE_NAME = GuiFronteriza_Module;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

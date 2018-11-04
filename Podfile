@@ -2,7 +2,8 @@ platform :ios, '11.0'
 
 target 'GuíaFronteriza' do
 
-  use_frameworks!
+  inhibit_all_warnings!
+
   pod 'Firebase'
   pod 'FirebaseCore'
   pod 'FirebaseMessaging'

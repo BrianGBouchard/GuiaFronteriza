@@ -2,12 +2,11 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var aboutButton: UIButton!
-    @IBOutlet var showTableButton: UIButton!
     @IBOutlet var crossingButton: UIButton!
     @IBOutlet var control: UISegmentedControl!
 
@@ -17,7 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var selectedCrossingDelay: String?
     var selectedFastestCrossing: TravelTime?
     let centerCoordinates = CLLocationCoordinate2DMake(30.874890, -106.286547)
-    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
     let locationManager = CLLocationManager()
     private let annotationIdentifier = MKAnnotationView.description()
 
@@ -34,7 +33,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.tabBarController?.tabBar.layer.borderColor = UIColor.white.cgColor
         
         view.addSubview(activityIndicator)
-        UIApplication.shared.statusBarStyle = .lightContent
         aboutButton.isSelected = false
         super.viewDidLoad()
         print(getDelayTime(forCrossing: "San Ysidro", crossingType: "<passenger_vehicle_lanes>", laneType: "<standard_lanes>"))
@@ -63,13 +61,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if control.selectedSegmentIndex == 1 {
-            UIApplication.shared.statusBarStyle = .default
-        }
+
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 
     func loadMap(rangeSpan: CLLocationDistance) {
-        let region = MKCoordinateRegionMakeWithDistance(centerCoordinates, rangeSpan, rangeSpan)
+        let region = MKCoordinateRegion(center: centerCoordinates, latitudinalMeters: rangeSpan, longitudinalMeters: rangeSpan)
         mapView.region = region
 
     }
@@ -106,7 +103,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             control.tintColor! = .white
             titleLabel.textColor = .white
             aboutButton.titleLabel!.textColor! = .white
-            UIApplication.shared.statusBarStyle = .lightContent
             activityIndicator.color! = .white
             crossingButton.titleLabel?.textColor! = .white
             crossingButton.layer.borderColor = UIColor.white.cgColor
@@ -116,10 +112,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             control.tintColor! = .black
             titleLabel.textColor = .black
             aboutButton.titleLabel!.textColor! = .black
-            UIApplication.shared.statusBarStyle = .default
             activityIndicator.color! = .black
             crossingButton.titleLabel!.textColor! = .black
             crossingButton.layer.borderColor = UIColor.black.cgColor
+        }
+
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if control!.selectedSegmentIndex == 0 {
+            return .lightContent
+        } else {
+            return .default
         }
     }
 
@@ -128,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let alert = UIAlertController(title: "Location Service Disabled", message: "Turn on location services to use this feature", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
-                let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
+                let settingsURL = URL(string: UIApplication.openSettingsURLString)
                 UIApplication.shared.open(settingsURL!, options: [:], completionHandler: nil)
             }
             alert.addAction(action)
@@ -180,7 +185,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let closestDistances = distances[..<maxNumberOfDistnces]
         var increment: Int = 0
         for item in closestDistances {
-            let request = MKDirectionsRequest()
+            let request = MKDirections.Request()
             request.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation.coordinate))
             request.destination = MKMapItem(placemark: MKPlacemark(coordinate: item.crossing.coordinate))
             let directions = MKDirections(request: request)
@@ -222,7 +227,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.activityIndicator.stopAnimating()
             self.selectedFastestCrossing = fastestCrossing
             travelTimes = []
-            self.mapView.region = MKCoordinateRegionMakeWithDistance(fastestCrossing.crossingAnnotation.coordinate, 25000, 25000)
+            self.mapView.region = MKCoordinateRegion(center: fastestCrossing.crossingAnnotation.coordinate,
+                                                     latitudinalMeters: 25000,
+                                                     longitudinalMeters: 25000)
             self.performSegue(withIdentifier: "FastestCrossing", sender: self)
         }
     }
@@ -230,7 +237,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
 // MARK : MKMapViewDelegate
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let port = view.annotation?.coordinate {
