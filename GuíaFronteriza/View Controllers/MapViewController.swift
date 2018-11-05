@@ -10,6 +10,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var crossingButton: UIButton!
     @IBOutlet var control: UISegmentedControl!
 
+
     var crossings: Array<CrossingAnnotation> = []
     var selectedPort: CrossingAnnotation?
     var selectedCrossingTitle: String?
@@ -23,14 +24,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else{ return
+        }
+        statusBar.backgroundColor = UIColor.darkGray
+
+        /*let divider = UIView(frame: CGRect(x: 0.0, y: statusBar.frame.height, width: self.view.frame.width, height: 1.0))
+        divider.backgroundColor = UIColor.white
+        divider.alpha = 1.0
+        //mapView.addSubview(divider)
+
+        let bottomDivider = UIView(frame: CGRect(x: 0.0, y: mapView.frame.height-1, width: mapView.frame.width, height: 1))
+        bottomDivider.backgroundColor = UIColor.white
+        bottomDivider.alpha = 1.0
+        mapView.addSubview(bottomDivider)*/
+
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         activityIndicator.color = UIColor.white
         activityIndicator.hidesWhenStopped = true
 
         mapView.showsUserLocation = true
 
-        //self.tabBarController!.tabBar.layer.borderWidth = 1
-        self.tabBarController?.tabBar.layer.borderColor = UIColor.white.cgColor
+        /*self.tabBarController!.tabBar.layer.borderWidth = 1
+        self.tabBarController?.tabBar.layer.borderColor = UIColor.white.cgColor*/
         
         view.addSubview(activityIndicator)
         aboutButton.isSelected = false
