@@ -4,7 +4,7 @@ import MapKit
 
 class FastestCrossingViewController: UIViewController {
 
-    var rootController: ViewController?
+    var rootController: MapViewController?
     var crossingName: String?
     var delay: String?
     var selectedFastestCrossing: TravelTime?
@@ -15,7 +15,7 @@ class FastestCrossingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
+        self.setNeedsStatusBarAppearanceUpdate()
         directionsButton.layer.cornerRadius = 7
         crossingNameLabel.text! = crossingName!
         delayLabel.text! = delay!
@@ -32,13 +32,21 @@ class FastestCrossingViewController: UIViewController {
             rootController?.aboutButton!.titleLabel!.textColor! = .white
             rootController?.crossingButton.titleLabel?.textColor! = .white
             rootController?.crossingButton.layer.borderColor = UIColor.white.cgColor
-            UIApplication.shared.statusBarStyle = .lightContent
 
         } else {
             rootController?.aboutButton!.titleLabel!.textColor! = .black
             rootController?.crossingButton.titleLabel?.textColor! = .black
             rootController?.crossingButton.layer.borderColor = UIColor.black.cgColor
-            UIApplication.shared.statusBarStyle = .default
+        }
+
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if rootController?.control!.selectedSegmentIndex == 0 {
+            return .lightContent
+        } else {
+            return .default
         }
     }
 }

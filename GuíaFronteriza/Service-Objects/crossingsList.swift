@@ -14,7 +14,7 @@ func getCrossings() -> [CrossingAnnotation] {
     crossings.append(brownsvilleBM)
 
     let brownsvilleGateway = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(25.898732, -97.497447), title: "Brownsville: \nGateway Bridge")
-    brownsvilleGateway.xmlIdentifier = "Gateway"
+    brownsvilleGateway.xmlIdentifier = "535504"
     crossings.append(brownsvilleGateway)
 
     let brownsvilleLosIndios = CrossingAnnotation(coordinate: CLLocationCoordinate2DMake(26.029156, -97.738830), title: "Brownsville: \nLos Indios")

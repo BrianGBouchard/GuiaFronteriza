@@ -2,9 +2,6 @@ import Foundation
 import UIKit
 import MapKit
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseMessaging
 
 class DataViewController: UIViewController {
 
@@ -18,9 +15,9 @@ class DataViewController: UIViewController {
     var selectedCrossing: CrossingAnnotation?
     var crossing: String?
     var crossingTitle: String?
-    var rootController: ViewController?
+    var rootController: MapViewController?
     var tableRootController: TableListViewController?
-    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
 
     var dbRef: DatabaseReference!
 
@@ -35,10 +32,10 @@ class DataViewController: UIViewController {
 
         let button = UIBarButtonItem(barButtonSystemItem: .done , target: self, action: #selector(self.barButtonPressed(sender:)))
         button.title = "Back"
-        button.setTitleTextAttributes([NSAttributedStringKey.font:UIFont(name: "Menlo", size: 15.0)], for: .normal)
+        button.setTitleTextAttributes([NSAttributedString.Key.font:UIFont(name: "Menlo", size: 15.0)!], for: .normal)
         navigationItem.leftBarButtonItem = button
 
-        UIApplication.shared.statusBarStyle = .lightContent
+        self.setNeedsStatusBarAppearanceUpdate()
         titleLabel.text! = crossingTitle!
         self.navigationItem.title = "Border Crossing"
         getData(crossing: crossing!, crossingTitle: crossingTitle!)
@@ -96,9 +93,8 @@ class DataViewController: UIViewController {
         if tableRootController != nil {
             tableRootController?.activityIndicator.stopAnimating()
         }
-        if rootController?.control.selectedSegmentIndex == 1 {
-            UIApplication.shared.statusBarStyle = .default
-        }
+
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 
     @IBAction func notificationsButton(sender: Any?) {
@@ -108,5 +104,13 @@ class DataViewController: UIViewController {
     @IBAction func directionsButtonPressed(sender: Any?) {
         let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         MKMapItem(placemark: MKPlacemark(coordinate: selectedCrossing!.coordinate)).openInMaps(launchOptions: options)
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if rootController?.control.selectedSegmentIndex == 1 {
+           return .default
+        }
+
+        return .lightContent
     }
 }

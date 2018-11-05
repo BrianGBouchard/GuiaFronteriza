@@ -3,11 +3,11 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    var rootController: ViewController?
+    var rootController: MapViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     @IBAction func buttonPressed(sender: Any?) {
@@ -15,12 +15,20 @@ class InfoViewController: UIViewController {
         if rootController?.control!.selectedSegmentIndex == 0 {
             rootController?.aboutButton!.titleLabel!.textColor! = .white
             rootController?.crossingButton.titleLabel?.textColor! = .white
-            UIApplication.shared.statusBarStyle = .lightContent
         } else {
             rootController?.aboutButton!.titleLabel!.textColor! = .black
             rootController?.crossingButton.titleLabel?.textColor! = .black
-            UIApplication.shared.statusBarStyle = .default
         }
+
+        self.setNeedsStatusBarAppearanceUpdate()
         rootController?.activityIndicator.stopAnimating()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if rootController?.control!.selectedSegmentIndex == 0 {
+            return .lightContent
+        } else {
+            return .default
+        }
     }
 }

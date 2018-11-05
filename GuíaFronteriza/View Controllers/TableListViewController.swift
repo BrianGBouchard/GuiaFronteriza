@@ -6,13 +6,12 @@ class TableListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
 
-    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-    var rootViewController: ViewController?
+    var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+    var rootViewController: MapViewController?
     var crossings: Array<CrossingAnnotation> = []
     var selectedCrossing: CrossingAnnotation?
 
     override func viewDidLoad() {
-        UIApplication.shared.statusBarStyle = .lightContent
         view.addSubview(activityIndicator)
 
         activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
@@ -27,7 +26,10 @@ class TableListViewController: UIViewController {
         super.viewDidAppear(true)
         crossings = getCrossings()
         tableView.reloadData()
-        UIApplication.shared.statusBarStyle = .lightContent
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
