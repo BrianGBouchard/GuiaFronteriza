@@ -60,6 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        /*Messaging.messaging().setAPNSToken(deviceToken as Data, type: .prod)
+        print("Token is \(Messaging.messaging().apnsToken)")*/
+    }
+
     func connectToFMC() {
         Messaging.messaging().shouldEstablishDirectChannel = true
     }
